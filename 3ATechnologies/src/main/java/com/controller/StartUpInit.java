@@ -32,7 +32,8 @@ public class StartUpInit implements ApplicationRunner {
 			if (projet.getEtatProjet().equals(EtatProjet.Clôturer)) {
 
 			} else {
-				if (((now.toString()).equals(projet.getDateDebut())) || (projet.getEtatProjet().equals(EtatProjet.enCours))) {
+				if (((now.toString()).equals(projet.getDateDebut()))
+						|| (projet.getEtatProjet().equals(EtatProjet.enCours))) {
 					projet.setEtatProjet(EtatProjet.enCours);
 				} else if ((now.toString()).equals(projet.getDateFin())) {
 					projet.setEtatProjet(EtatProjet.Clôturer);
@@ -42,6 +43,8 @@ public class StartUpInit implements ApplicationRunner {
 			}
 			service.updateProject(projet);
 		}
+
+		
 		
 	}
 }

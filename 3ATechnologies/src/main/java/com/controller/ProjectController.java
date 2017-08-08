@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ import com.entity.Projet;
 import com.service.IprojectService;
 
 @RestController
+@RequestMapping("projet")
 @CrossOrigin(origins = { "http://localhost:4200" })
 public class ProjectController {
 
@@ -36,20 +38,19 @@ public class ProjectController {
 		}
 		service.addProject(projet);
 	}
-	
 
 	@GetMapping("showAllProject")
 	public ResponseEntity<List<Projet>> getAllProject() {
 		List<Projet> list = service.getAllProject();
 		return new ResponseEntity<List<Projet>>(list, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("getProjectById")
 	public ResponseEntity<Projet> getProject(@RequestParam("id") String projectID) {
 		Projet projet = service.findById(Long.valueOf(projectID));
 		return new ResponseEntity<Projet>(projet, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("getProjectByName")
 	public ResponseEntity<List<Projet>> getProjectByName(@RequestParam("name") String projectName) {
 		List<Projet> list = service.getByName(projectName);
