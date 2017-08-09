@@ -27,8 +27,6 @@ public class StartUpInit implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
-//		service.updateProjectState();
-		Projet projet = service.findById(1);
-		System.err.println(projet.getTeamMembers().get(0).getUser().getUsername());
+		service.updateProjectState();
 	}
 }

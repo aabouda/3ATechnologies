@@ -19,8 +19,8 @@ public class UserProjet implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private UserProjetID userProjetID;
-//	@OneToMany(mappedBy="userProjet",cascade=CascadeType.PERSIST,fetch = FetchType.EAGER)
-//	private List<Tache> listTaches;
+	@OneToMany(mappedBy="userProjet",cascade=CascadeType.PERSIST,fetch = FetchType.EAGER)
+	private List<Tache> listTaches;
 	private Role role;
 	@ManyToOne
 	@JoinColumn(name = "idProjetPK", insertable = false, updatable = false)
@@ -33,9 +33,9 @@ public class UserProjet implements Serializable {
 		super();
 	}
 
-//	public List<Tache> getListTaches() {
-//		return listTaches;
-//	}
+	public List<Tache> getListTaches() {
+		return listTaches;
+	}
 
 	public Projet getProjet() {
 		return projet;
@@ -53,9 +53,9 @@ public class UserProjet implements Serializable {
 		return userProjetID;
 	}
 
-//	public void setListTaches(List<Tache> listTaches) {
-//		this.listTaches = listTaches;
-//	}
+	public void setListTaches(List<Tache> listTaches) {
+		this.listTaches = listTaches;
+	}
 
 	public void setProjet(Projet projet) {
 		this.projet = projet;
