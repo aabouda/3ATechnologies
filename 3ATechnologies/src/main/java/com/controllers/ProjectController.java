@@ -1,4 +1,4 @@
-package com.controller;
+package com.controllers;
 
 import java.text.ParseException;
 import java.time.LocalDate;

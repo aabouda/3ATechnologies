@@ -31,15 +31,14 @@ public class User implements Serializable {
 	@NotNull
 	@Column(unique = true)
 	private String email;
-	@Lob
-	private byte[] picture;
+	private String picture;
 
 	public User() {
 		super();
 	}
 
 	public User(long userID, String firstName, String lastName, String username, String password, String email,
-			byte[] picture) {
+			String picture) {
 		this.userID = userID;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -49,7 +48,7 @@ public class User implements Serializable {
 		this.picture = picture;
 	}
 
-	public User(String firstName, String lastName, String username, String password, String email, byte[] picture) {
+	public User(String firstName, String lastName, String username, String password, String email, String picture) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -75,7 +74,7 @@ public class User implements Serializable {
 		return password;
 	}
 
-	public byte[] getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 
@@ -103,7 +102,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public void setPicture(byte[] picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
