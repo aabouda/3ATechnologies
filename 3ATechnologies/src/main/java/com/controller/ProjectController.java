@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ennumeration.EtatProjet;
-import com.entity.Projet;
-import com.service.IprojectService;
+import com.entities.Projet;
+import com.interfaces.IprojectService;
 
 @RestController
 @RequestMapping("projet")

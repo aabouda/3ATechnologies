@@ -1,9 +1,9 @@
-package com.service;
+package com.interfaces;
 
 import java.util.List;
 
 import com.ennumeration.EtatProjet;
-import com.entity.Projet;
+import com.entities.Projet;
 
 public interface IprojectService {
 

@@ -1,4 +1,4 @@
-package com.service;
+package com.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ennumeration.EtatProjet;
-import com.entity.Projet;
+import com.entities.Projet;
+import com.interfaces.IprojectService;
 
 @Service
 @Transactional

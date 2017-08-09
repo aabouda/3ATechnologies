@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ennumeration.EtatProjet;
-import com.entity.Projet;
-import com.service.IprojectService;
+import com.entities.Projet;
+import com.interfaces.IprojectService;
 
 @Service
 @Transactional
