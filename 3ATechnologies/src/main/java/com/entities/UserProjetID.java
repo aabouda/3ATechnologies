@@ -8,8 +8,8 @@ import javax.persistence.Embeddable;
 public class UserProjetID implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int idProjetPK;
-	private int idUserPK;
+	private long idProjetPK;
+	private long idUserPK;
 
 	public UserProjetID() {
 		super();
@@ -31,28 +31,28 @@ public class UserProjetID implements Serializable {
 		return true;
 	}
 
-	public int getIdProjetPK() {
+	public long getIdProjetPK() {
 		return idProjetPK;
 	}
 
-	public int getIdUserPK() {
+	public long getIdUserPK() {
 		return idUserPK;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final long prime = 31;
+		long result = 1;
 		result = prime * result + idProjetPK;
 		result = prime * result + idUserPK;
-		return result;
+		return (int) result;
 	}
 
-	public void setIdProjetPK(int idProjetPK) {
+	public void setIdProjetPK(long idProjetPK) {
 		this.idProjetPK = idProjetPK;
 	}
 
-	public void setIdUserPK(int idUserPK) {
+	public void setIdUserPK(long idUserPK) {
 		this.idUserPK = idUserPK;
 	}
 
