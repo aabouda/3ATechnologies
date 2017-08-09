@@ -1,6 +1,7 @@
 package com.service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -86,6 +87,32 @@ public class ProjectService implements IprojectService {
 	public List<Projet> getByInterval(int interval) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updateProjectState() {
+		List<Projet> Lp = this.getAllProject();
+		LocalDate now = java.time.LocalDate.now();
+		for (Projet projet : Lp) {
+			if (projet.getEtatProjet().equals(EtatProjet.Clôturer)) {
+			} else {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
+				LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);			
+				if ((now.toString()).equals(projet.getDateDebut()) || ((dateDebut.isAfter(now) && dateFin.isBefore(now) ))) {
+					projet.setEtatProjet(EtatProjet.enCours);
+				} else if (dateFin.isBefore(now)) {
+					projet.setEtatProjet(EtatProjet.Clôturer);
+				}  else if (dateDebut.isAfter(now)) {
+					projet.setEtatProjet(EtatProjet.àVenir);
+				}
+
+
+			}
+
+			this.updateProject(projet);
+		}
+
 	}
 
 }

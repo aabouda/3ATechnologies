@@ -24,6 +24,8 @@ public interface IprojectService {
 
 	public void updateProject(Projet projet);
 
+	public void updateProjectState();
+
 	public List<Projet> getByName(String name);
 
 	public List<Projet> getByState(EtatProjet etatProjet);

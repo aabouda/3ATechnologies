@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,25 +27,6 @@ public class StartUpInit implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
-		List<Projet> Lp = service.getAllProject();
-		LocalDate now = java.time.LocalDate.now();
-		for (Projet projet : Lp) {
-			if (projet.getEtatProjet().equals(EtatProjet.Clôturer)) {
-
-			} else {
-				if (((now.toString()).equals(projet.getDateDebut()))
-						|| (projet.getEtatProjet().equals(EtatProjet.enCours))) {
-					projet.setEtatProjet(EtatProjet.enCours);
-				} else if ((now.toString()).equals(projet.getDateFin())) {
-					projet.setEtatProjet(EtatProjet.Clôturer);
-				} else {
-					projet.setEtatProjet(EtatProjet.àVenir);
-				}
-			}
-			service.updateProject(projet);
-		}
-
-		
-		
+		service.updateProjectState();
 	}
 }
