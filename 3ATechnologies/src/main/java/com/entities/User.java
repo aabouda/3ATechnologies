@@ -1,13 +1,15 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -32,6 +34,8 @@ public class User implements Serializable {
 	@Column(unique = true)
 	private String email;
 	private String picture;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	private List<UserProjet> projets;
 
 	public User() {
 		super();
@@ -112,6 +116,14 @@ public class User implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public List<UserProjet> getProjets() {
+		return projets;
+	}
+
+	public void setProjets(List<UserProjet> projets) {
+		this.projets = projets;
 	}
 
 }
