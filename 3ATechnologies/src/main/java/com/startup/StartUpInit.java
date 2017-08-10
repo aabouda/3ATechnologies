@@ -13,20 +13,24 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
 import com.interfaces.IprojectService;
+import com.interfaces.IuserService;
 
 @Service
 @Transactional
 public class StartUpInit implements ApplicationRunner {
 
-	private IprojectService service;
+	private IprojectService serviceProjet;
+	private IuserService serviceUser;
 
 	@Autowired
-	public StartUpInit(IprojectService service) {
-		this.service = service;
+	public StartUpInit(IprojectService serviceProjet, IuserService userService) {
+		this.serviceProjet = serviceProjet;
+		this.serviceUser = userService;
 	}
 
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
-		service.updateProjectState();
+		//serviceProjet.updateProjectState();
+		System.err.println(serviceUser.getUsersToAdd("").size());
 	}
 }

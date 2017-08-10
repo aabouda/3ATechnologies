@@ -8,6 +8,8 @@ import com.entities.User;
 
 public interface IuserService {
 	
-	public List<User> getAllProject();
+	public List<User> getAllUsers();
+	
+	public List<User> getUsersToAdd(String pattern);
 
 }

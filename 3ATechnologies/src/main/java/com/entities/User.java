@@ -45,6 +45,15 @@ public class User implements Serializable {
 		super();
 	}
 
+	public User(long userID, String firstName, String lastName) {
+		super();
+		this.userID = userID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+
+
 	public User(long userID, String firstName, String lastName, String username, String password, String email,
 			String picture) {
 		this.userID = userID;
