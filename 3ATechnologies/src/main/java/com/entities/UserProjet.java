@@ -33,6 +33,16 @@ public class UserProjet implements Serializable {
 		super();
 	}
 
+	
+	public UserProjet(UserProjetID userProjetID,Role role, Projet projet, User user) {
+		super();
+		this.userProjetID = userProjetID;
+		this.role = role;
+		this.projet = projet;
+		this.user = user;
+	}
+
+
 	public List<Tache> getListTaches() {
 		return listTaches;
 	}

@@ -15,6 +15,14 @@ public class UserProjetID implements Serializable {
 		super();
 	}
 
+	
+	public UserProjetID(long idProjetPK, long idUserPK) {
+		super();
+		this.idProjetPK = idProjetPK;
+		this.idUserPK = idUserPK;
+	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

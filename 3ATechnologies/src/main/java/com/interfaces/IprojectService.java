@@ -2,6 +2,9 @@ package com.interfaces;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
 
@@ -35,5 +38,6 @@ public interface IprojectService {
 	public List<Projet> getNextEndDate(long daysToAdd);
 
 	public List<Projet> getByInterval(int interval);
+	
 
 }

@@ -2,6 +2,7 @@ package com.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
+import com.entities.UserProjet;
+import com.entities.UserProjetID;
 import com.interfaces.IprojectService;
 
 @Service
@@ -24,6 +27,22 @@ public class ProjectService implements IprojectService {
 	@Override
 	public void addProject(Projet projet) {
 		entityManager.persist(projet);
+		Projet x = getByName(projet.getName()).get(0);
+		List<UserProjet> Lup = new ArrayList<>();
+		for (UserProjet userProjet : projet.getTeamMembers()) {
+			UserProjet abba = new UserProjet();
+			abba.setProjet(x);
+			abba.setUser(userProjet.getUser());
+			abba.setRole(userProjet.getRole());
+			abba.setUserProjetID(new UserProjetID(x.getProjectID(), userProjet.getUser().getUserID()));
+			Lup.add(abba);
+		}
+		x.setTeamMembers(Lup);
+		for (UserProjet userProjet : Lup) {
+			entityManager.persist(userProjet);
+		}
+
+		updateProject(x);
 	}
 
 	@Override
