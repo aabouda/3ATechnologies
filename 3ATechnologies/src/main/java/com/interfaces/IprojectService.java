@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
+import com.entities.UserProjet;
 
 public interface IprojectService {
 
@@ -39,5 +40,8 @@ public interface IprojectService {
 
 	public List<Projet> getByInterval(int interval);
 	
+	public List<UserProjet> getTeamMembers(long projectID);
+	
+	public List<UserProjet> getTeamMembers(Projet projet);
 
 }

@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.ennumeration.EtatProjet;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -33,6 +34,7 @@ public class Projet implements Serializable {
 	private String budget;
 	private EtatProjet etatProjet;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "projet")
+	@JsonIgnore
 	private List<UserProjet> teamMembers;
 
 	public Projet() {

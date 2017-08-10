@@ -60,6 +60,12 @@ public class ProjectController {
 		return new ResponseEntity<List<Projet>>(list, HttpStatus.OK);
 	}
 
+	@GetMapping("getTeamMembersByProjet")
+	public ResponseEntity<List<UserProjet>> getTeamMembersByProjet(@RequestParam("projectID") String projectID) {
+		List<UserProjet> list = service.getTeamMembers(Long.valueOf(projectID));
+		return new ResponseEntity<List<UserProjet>>(list, HttpStatus.OK);
+	}
+
 	@GetMapping("projet")
 	public ResponseEntity<List<Projet>> filtreProject(@RequestParam("etatProjet") String etatProjet) {
 		EtatProjet etat = null;

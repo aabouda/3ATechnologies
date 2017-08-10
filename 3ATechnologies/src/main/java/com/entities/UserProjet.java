@@ -41,6 +41,23 @@ public class UserProjet implements Serializable {
 		this.projet = projet;
 		this.user = user;
 	}
+	
+	
+	public UserProjet(UserProjetID userProjetID,String role, Projet projet, User user) {
+		super();
+		this.userProjetID = userProjetID;
+		this.projet = projet;
+		this.user = user;
+		if(role.equals("Scrum Master")){
+			this.role = Role.ScrumMaster;
+		}
+		if(role.equals("Product Owner")){
+			this.role = Role.ProductOwner;
+		}
+		if(role.equals("Team Member")){
+			this.role = Role.TeamMember;
+		}
+	}
 
 
 	public List<Tache> getListTaches() {

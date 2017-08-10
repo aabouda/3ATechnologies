@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -39,6 +40,7 @@ public class User implements Serializable {
 	private String email;
 	private String picture;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	@JsonIgnore
 	private List<UserProjet> projets;
 
 	public User() {

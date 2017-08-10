@@ -1,9 +1,8 @@
 package com.ennumeration;
 
 public enum Role {
-	ScrumMaster,
-	ProductOwner,
-	TeamMember,
+	ScrumMaster, 
+	ProductOwner, 
+	TeamMember, 
 	Directeur
-
 }

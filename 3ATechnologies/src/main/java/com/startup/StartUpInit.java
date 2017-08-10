@@ -31,6 +31,6 @@ public class StartUpInit implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
 		//serviceProjet.updateProjectState();
-		System.err.println(serviceUser.getUsersToAdd("").size());
+		System.err.println(serviceProjet.findById(1).getTeamMembers().size());
 	}
 }

@@ -118,21 +118,47 @@ public class ProjectService implements IprojectService {
 			} else {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
-				LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);			
-				if ((now.toString()).equals(projet.getDateDebut()) || ((dateDebut.isAfter(now) && dateFin.isBefore(now) ))) {
+				LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);
+				if ((now.toString()).equals(projet.getDateDebut())
+						|| ((dateDebut.isAfter(now) && dateFin.isBefore(now)))) {
 					projet.setEtatProjet(EtatProjet.enCours);
 				} else if (dateFin.isBefore(now)) {
 					projet.setEtatProjet(EtatProjet.Clôturer);
-				}  else if (dateDebut.isAfter(now)) {
+				} else if (dateDebut.isAfter(now)) {
 					projet.setEtatProjet(EtatProjet.àVenir);
 				}
-
 
 			}
 
 			this.updateProject(projet);
 		}
 
+	}
+
+	@Override
+	public List<UserProjet> getTeamMembers(long projectID) {
+		TypedQuery<Object> q = entityManager
+				.createQuery("SELECT p.teamMembers FROM Projet p where p.projectID  =:projectID", Object.class);
+		q.setParameter("projectID", projectID);
+		List<Object> results = q.getResultList();
+		List<UserProjet> teamMembers = new ArrayList<>();
+		for (Object result : results) {
+			teamMembers.add((UserProjet) result);
+		}
+		return teamMembers;
+	}
+
+	@Override
+	public List<UserProjet> getTeamMembers(Projet projet) {
+		TypedQuery<Object> q = entityManager
+				.createQuery("SELECT p.teamMembers FROM Projet p where p.projectID  =:projectID", Object.class);
+		q.setParameter("projectID", projet.getProjectID());
+		List<Object> results = q.getResultList();
+		List<UserProjet> teamMembers = new ArrayList<>();
+		for (Object result : results) {
+			teamMembers.add((UserProjet) result);
+		}
+		return teamMembers;
 	}
 
 }
