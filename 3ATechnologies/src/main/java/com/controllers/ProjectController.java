@@ -2,6 +2,7 @@ package com.controllers;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +31,28 @@ public class ProjectController {
 
 	@Autowired
 	private IprojectService service;
+	private String projectNameToAdd;
 
 	@PostMapping("projet")
 	public void CreateProject(@RequestBody Projet projet) throws ParseException {
 		LocalDate now = java.time.LocalDate.now();
-		if ((now.toString()).equals(projet.getDateDebut())) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
+		LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);
+		if ((now.toString()).equals(projet.getDateDebut())|| ((dateDebut.isBefore(now) && dateFin.isAfter(now)))) {
 			projet.setEtatProjet(EtatProjet.enCours);
 		} else {
 			projet.setEtatProjet(EtatProjet.àVenir);
 		}
+		this.projectNameToAdd = projet.getName();
 		service.addProject(projet);
+	}
+	
+	@PostMapping("addTeamMembers")
+	public void addTeamMembers(@RequestBody List<UserProjet> Lup) throws ParseException {
+		System.err.println(Lup.size());
+		System.err.println(projectNameToAdd);
+		service.addTeamMembers(projectNameToAdd, Lup);
 	}
 
 	@GetMapping("showAllProject")

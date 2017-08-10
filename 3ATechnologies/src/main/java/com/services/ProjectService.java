@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ennumeration.EtatProjet;
+import com.ennumeration.Role;
 import com.entities.Projet;
 import com.entities.UserProjet;
 import com.entities.UserProjetID;
@@ -26,23 +27,8 @@ public class ProjectService implements IprojectService {
 
 	@Override
 	public void addProject(Projet projet) {
-		entityManager.persist(projet);
-		Projet x = getByName(projet.getName()).get(0);
-		List<UserProjet> Lup = new ArrayList<>();
-		for (UserProjet userProjet : projet.getTeamMembers()) {
-			UserProjet abba = new UserProjet();
-			abba.setProjet(x);
-			abba.setUser(userProjet.getUser());
-			abba.setRole(userProjet.getRole());
-			abba.setUserProjetID(new UserProjetID(x.getProjectID(), userProjet.getUser().getUserID()));
-			Lup.add(abba);
-		}
-		x.setTeamMembers(Lup);
-		for (UserProjet userProjet : Lup) {
-			entityManager.persist(userProjet);
-		}
-
-		updateProject(x);
+		entityManager.persist(entityManager.merge(projet));
+		entityManager.flush();
 	}
 
 	@Override
@@ -54,7 +40,6 @@ public class ProjectService implements IprojectService {
 	@Override
 	public void closeProjet(Projet projet) {
 		projet.setEtatProjet(EtatProjet.Clôturer);
-		entityManager.flush();
 
 	}
 
@@ -75,6 +60,14 @@ public class ProjectService implements IprojectService {
 				Projet.class);
 		q.setParameter("name", '%' + name + '%');
 		return q.getResultList();
+	}
+	
+	@Override
+	public Projet getProjectByName(String name) {
+		TypedQuery<Projet> q = entityManager.createQuery("SELECT p FROM Projet p where p.name =:name",
+				Projet.class);
+		q.setParameter("name",name);
+		return q.getSingleResult();
 	}
 
 	@Override
@@ -120,7 +113,7 @@ public class ProjectService implements IprojectService {
 				LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
 				LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);
 				if ((now.toString()).equals(projet.getDateDebut())
-						|| ((dateDebut.isAfter(now) && dateFin.isBefore(now)))) {
+						|| ((dateDebut.isBefore(now) && dateFin.isAfter(now)))) {
 					projet.setEtatProjet(EtatProjet.enCours);
 				} else if (dateFin.isBefore(now)) {
 					projet.setEtatProjet(EtatProjet.Clôturer);
@@ -159,6 +152,27 @@ public class ProjectService implements IprojectService {
 			teamMembers.add((UserProjet) result);
 		}
 		return teamMembers;
+	}
+
+	@Override
+	public void addTeamMembers(String projectName,List<UserProjet> members) {
+		Projet x = getProjectByName(projectName);
+		List<UserProjet> Lup = new ArrayList<>();
+		for (UserProjet userProjet : members) {
+			UserProjet abba = new UserProjet();
+			abba.setProjet(x);
+			abba.setUser(userProjet.getUser());
+			abba.setRole(userProjet.getRole());
+			abba.setUserProjetID(new UserProjetID(x.getProjectID(), userProjet.getUser().getUserID()));
+			Lup.add(abba);
+		}
+		x.setTeamMembers(Lup);
+		for (UserProjet userProjet : Lup) {
+			entityManager.persist(userProjet);
+		}
+
+		updateProject(x);
+		
 	}
 
 }

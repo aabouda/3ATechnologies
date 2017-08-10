@@ -20,6 +20,8 @@ public interface IprojectService {
 	 */
 	public void addProject(Projet projet);
 
+	public void addTeamMembers(String projectName, List<UserProjet> members);
+
 	public List<Projet> getAllProject();
 
 	public void closeProjet(Projet projet);
@@ -32,6 +34,8 @@ public interface IprojectService {
 
 	public List<Projet> getByName(String name);
 
+	public Projet getProjectByName(String name);
+
 	public List<Projet> getByState(EtatProjet etatProjet);
 
 	public List<Projet> getNextStartDate(long daysToAdd);
@@ -39,9 +43,9 @@ public interface IprojectService {
 	public List<Projet> getNextEndDate(long daysToAdd);
 
 	public List<Projet> getByInterval(int interval);
-	
+
 	public List<UserProjet> getTeamMembers(long projectID);
-	
+
 	public List<UserProjet> getTeamMembers(Projet projet);
 
 }
