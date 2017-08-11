@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ennumeration.EtatProjet;
-import com.ennumeration.Role;
 import com.entities.Projet;
 import com.entities.UserProjet;
 import com.entities.UserProjetID;
@@ -64,10 +63,15 @@ public class ProjectService implements IprojectService {
 	
 	@Override
 	public Projet getProjectByName(String name) {
+		try{
 		TypedQuery<Projet> q = entityManager.createQuery("SELECT p FROM Projet p where p.name =:name",
 				Projet.class);
 		q.setParameter("name",name);
 		return q.getSingleResult();
+		}
+		catch(Exception e){
+			return null;
+		}
 	}
 
 	@Override
@@ -173,6 +177,20 @@ public class ProjectService implements IprojectService {
 
 		updateProject(x);
 		
+	}
+
+	@Override
+	public boolean verifyExistance(String projectName) {
+		return (getProjectByName(projectName)!=null);
+	}
+	
+	@Override
+	public List<String> getAllProjectNames(){
+		List<String>Names = new ArrayList<>();
+		for(Projet projet:getAllProject()){
+			Names.add(projet.getName());
+		}
+		return Names;
 	}
 
 }

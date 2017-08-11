@@ -11,5 +11,7 @@ public interface IuserService {
 	public List<User> getAllUsers();
 	
 	public List<User> getUsersToAdd(String pattern);
+	
+	public User getUserById(long userID);
 
 }

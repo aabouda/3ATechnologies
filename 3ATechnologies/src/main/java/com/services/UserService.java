@@ -37,4 +37,9 @@ public class UserService implements IuserService {
 		return Luser;
 	}
 
+	@Override
+	public User getUserById(long userID) {
+		return entityManager.find(User.class, userID);
+	}
+
 }

@@ -2,9 +2,6 @@ package com.interfaces;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
 import com.entities.UserProjet;
@@ -47,5 +44,9 @@ public interface IprojectService {
 	public List<UserProjet> getTeamMembers(long projectID);
 
 	public List<UserProjet> getTeamMembers(Projet projet);
+
+	public boolean verifyExistance(String projectName);
+
+	public List<String> getAllProjectNames();
 
 }

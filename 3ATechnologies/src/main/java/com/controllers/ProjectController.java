@@ -3,7 +3,6 @@ package com.controllers;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
 import com.entities.UserProjet;
-import com.entities.UserProjetID;
 import com.interfaces.IprojectService;
 
 @RestController
@@ -35,6 +33,7 @@ public class ProjectController {
 
 	@PostMapping("projet")
 	public void CreateProject(@RequestBody Projet projet) throws ParseException {
+		synchronized (this) {
 		LocalDate now = java.time.LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
@@ -45,14 +44,15 @@ public class ProjectController {
 			projet.setEtatProjet(EtatProjet.àVenir);
 		}
 		this.projectNameToAdd = projet.getName();
-		service.addProject(projet);
+
+			service.addProject(projet);
+		}
 	}
 	
 	@PostMapping("addTeamMembers")
 	public void addTeamMembers(@RequestBody List<UserProjet> Lup) throws ParseException {
-		System.err.println(Lup.size());
-		System.err.println(projectNameToAdd);
-		service.addTeamMembers(projectNameToAdd, Lup);
+			service.addTeamMembers(projectNameToAdd, Lup);
+
 	}
 
 	@GetMapping("showAllProject")
@@ -71,6 +71,18 @@ public class ProjectController {
 	public ResponseEntity<List<Projet>> getProjectByName(@RequestParam("name") String projectName) {
 		List<Projet> list = service.getByName(projectName);
 		return new ResponseEntity<List<Projet>>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("getOneProjectByName")
+	public ResponseEntity<Projet> getOneProjectByName(@RequestParam("name") String projectName) {
+		Projet projet = service.getProjectByName(projectName);
+		return new ResponseEntity<Projet>(projet, HttpStatus.OK);
+	}
+	
+	@GetMapping("getAllProjectName")
+	public ResponseEntity<List<String>> getAllProjectNames() {
+		List<String> list = service.getAllProjectNames();
+		return new ResponseEntity<List<String>>(list, HttpStatus.OK);
 	}
 
 	@GetMapping("getTeamMembersByProjet")

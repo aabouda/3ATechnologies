@@ -34,4 +34,10 @@ public class UserController {
 		List<User> list = service.getUsersToAdd(pattern);
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
+	
+	@GetMapping("getUserById")
+	public ResponseEntity<User> getUserById(@RequestParam("id") String userID) {
+		User user = service.getUserById(Long.valueOf(userID));
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 }
