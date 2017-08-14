@@ -19,6 +19,8 @@ public interface IprojectService {
 
 	public void addTeamMembers(String projectName, List<UserProjet> members);
 
+	public void UpdateTeamMembers(long projectID, List<UserProjet> members);
+
 	public List<Projet> getAllProject();
 
 	public void closeProjet(Projet projet);
@@ -48,5 +50,7 @@ public interface IprojectService {
 	public boolean verifyExistance(String projectName);
 
 	public List<String> getAllProjectNames();
+
+	// public void updateTeamMembers()
 
 }

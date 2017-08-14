@@ -60,16 +60,15 @@ public class ProjectService implements IprojectService {
 		q.setParameter("name", '%' + name + '%');
 		return q.getResultList();
 	}
-	
+
 	@Override
 	public Projet getProjectByName(String name) {
-		try{
-		TypedQuery<Projet> q = entityManager.createQuery("SELECT p FROM Projet p where p.name =:name",
-				Projet.class);
-		q.setParameter("name",name);
-		return q.getSingleResult();
-		}
-		catch(Exception e){
+		try {
+			TypedQuery<Projet> q = entityManager.createQuery("SELECT p FROM Projet p where p.name =:name",
+					Projet.class);
+			q.setParameter("name", name);
+			return q.getSingleResult();
+		} catch (Exception e) {
 			return null;
 		}
 	}
@@ -159,7 +158,7 @@ public class ProjectService implements IprojectService {
 	}
 
 	@Override
-	public void addTeamMembers(String projectName,List<UserProjet> members) {
+	public void addTeamMembers(String projectName, List<UserProjet> members) {
 		Projet x = getProjectByName(projectName);
 		List<UserProjet> Lup = new ArrayList<>();
 		for (UserProjet userProjet : members) {
@@ -176,18 +175,46 @@ public class ProjectService implements IprojectService {
 		}
 
 		updateProject(x);
+
+	}
+
+	@Override
+	public void UpdateTeamMembers(long projectID, List<UserProjet> members) {
+		Projet x = findById(projectID);
 		
+		List<UserProjet> Lup = getTeamMembers(projectID);
+		for (UserProjet userProjet : Lup) {
+			entityManager.remove(userProjet);
+		}
+		updateProject(x);
+		Lup.clear();		
+		for (UserProjet userProjet : members) {
+		UserProjet abba = new UserProjet();
+		abba.setProjet(x);
+		abba.setUser(userProjet.getUser());
+		abba.setRole(userProjet.getRole());
+		abba.setUserProjetID(new UserProjetID(x.getProjectID(), userProjet.getUser().getUserID()));
+		Lup.add(abba);
+	}
+		x.setTeamMembers(Lup);
+		for (UserProjet userProjet : Lup) {
+			entityManager.persist(userProjet);
+		}
+
+		updateProject(x);
+
+
 	}
 
 	@Override
 	public boolean verifyExistance(String projectName) {
-		return (getProjectByName(projectName)!=null);
+		return (getProjectByName(projectName) != null);
 	}
-	
+
 	@Override
-	public List<String> getAllProjectNames(){
-		List<String>Names = new ArrayList<>();
-		for(Projet projet:getAllProject()){
+	public List<String> getAllProjectNames() {
+		List<String> Names = new ArrayList<>();
+		for (Projet projet : getAllProject()) {
 			Names.add(projet.getName());
 		}
 		return Names;
