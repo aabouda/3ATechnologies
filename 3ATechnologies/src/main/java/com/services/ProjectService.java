@@ -9,8 +9,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.ennumeration.EtatProjet;
 import com.entities.Projet;
@@ -21,8 +26,11 @@ import com.interfaces.IprojectService;
 @Service
 @Transactional
 public class ProjectService implements IprojectService {
+	
 	@PersistenceContext
 	private EntityManager entityManager;
+    @Autowired
+    public JavaMailSender emailSender; 
 
 	@Override
 	public void addProject(Projet projet) {
@@ -219,5 +227,13 @@ public class ProjectService implements IprojectService {
 		}
 		return Names;
 	}
+	
+    public void sendSimpleMessage(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage(); 
+        message.setTo(to); 
+        message.setSubject(subject); 
+        message.setText(text);
+        emailSender.send(message);
+    }
 
 }

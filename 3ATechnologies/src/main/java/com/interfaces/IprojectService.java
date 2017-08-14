@@ -51,6 +51,6 @@ public interface IprojectService {
 
 	public List<String> getAllProjectNames();
 
-	// public void updateTeamMembers()
+	public void sendSimpleMessage(String to, String subject, String text);
 
 }

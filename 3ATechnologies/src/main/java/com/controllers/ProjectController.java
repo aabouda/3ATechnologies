@@ -27,6 +27,7 @@ import com.interfaces.IprojectService;
 @RequestMapping("projet")
 @CrossOrigin(origins = { "http://localhost:4200" })
 public class ProjectController {
+  
 
 	@Autowired
 	private IprojectService service;
@@ -137,5 +138,7 @@ public class ProjectController {
 		service.UpdateTeamMembers(projectIDtoUpdate, Lup);
 
 	}
+	
+
 
 }
