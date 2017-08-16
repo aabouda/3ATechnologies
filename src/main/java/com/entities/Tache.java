@@ -19,6 +19,9 @@ public class Tache implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTache;
+	private String userStory;
+	private String tacheName;
+	private int estimation;
 	@ManyToOne
 	private UserProjet userProjet;
 
@@ -27,6 +30,18 @@ public class Tache implements Serializable {
 	}
 
 	
+	
+	public Tache(int idTache, String userStory, String tacheName, int estimation, UserProjet userProjet) {
+		super();
+		this.idTache = idTache;
+		this.userStory = userStory;
+		this.tacheName = tacheName;
+		this.estimation = estimation;
+		this.userProjet = userProjet;
+	}
+
+
+
 	public int getIdTache() {
 		return idTache;
 	}
@@ -45,4 +60,35 @@ public class Tache implements Serializable {
 		this.userProjet = userProjet;
 	}
 
+
+	public String getUserStory() {
+		return userStory;
+	}
+
+
+	public void setUserStory(String userStory) {
+		this.userStory = userStory;
+	}
+
+
+	public String getTacheName() {
+		return tacheName;
+	}
+
+
+	public void setTacheName(String tacheName) {
+		this.tacheName = tacheName;
+	}
+
+
+	public int getEstimation() {
+		return estimation;
+	}
+
+
+	public void setEstimation(int estimation) {
+		this.estimation = estimation;
+	}
+
+	
 }
