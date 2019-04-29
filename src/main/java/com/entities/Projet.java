@@ -1,17 +1,12 @@
 package com.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.ennumeration.EtatProjet;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Projet implements Serializable {
@@ -24,103 +19,243 @@ public class Projet implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long projectID;
-	private String name;
+	private String nomProjet;
 	private String description;
-	private String dateDebut;
-	private String dateFin;
-	private String budget;
-	private EtatProjet etatProjet;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "projet")
-	@JsonIgnore
-	private List<UserProjet> teamMembers;
-
-	public Projet() {
-		super();
+	private Date dateDebutPrevu;
+	private Date dateFinPrevu;
+	private Date dateDebutReelle;
+	private Date dateFinReelle;
+	private String budgetPrevu;
+	private String budgetReelle;
+	private String phase;
+	private String nbRessource;
+	private Integer etatProjet;
+	private Integer nbRessourceReelle;
+	private float  avancement;
+	
+	
+	private Integer calMessage;
+	private Integer calSprint;
+	private Integer calModuleApp;
+	private Integer calEnvironnement;
+	private Integer calVerssion;
+	
+	private Integer calBug;
+	private Integer calRelease;
+	
+	
+	
+	
+	public Integer getCalBug() {
+		return calBug;
 	}
 
-	public Projet(long projectID, String name, String description, String dateDebut, String dateFin, String budget) {
-		super();
-		this.projectID = projectID;
-		this.name = name;
-		this.description = description;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.budget = budget;
+	public void setCalBug(Integer calBug) {
+		this.calBug = calBug;
 	}
 
-	public Projet(String name, String description, String dateDebut, String dateFin, String budget,
-			EtatProjet etatProjet) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.budget = budget;
-		this.etatProjet = etatProjet;
+	public Integer getCalRelease() {
+		return calRelease;
 	}
 
-	public String getBudget() {
-		return budget;
+	public void setCalRelease(Integer calRelease) {
+		this.calRelease = calRelease;
 	}
 
-	public String getDateDebut() {
-		return dateDebut;
+	public Integer getCalMessage() {
+		return calMessage;
 	}
 
-	public String getDateFin() {
-		return dateFin;
+	public void setCalMessage(Integer calMessage) {
+		this.calMessage = calMessage;
 	}
 
-	public String getDescription() {
-		return description;
+	public Integer getCalSprint() {
+		return calSprint;
 	}
 
-	public String getName() {
-		return name;
+	public void setCalSprint(Integer calSprint) {
+		this.calSprint = calSprint;
+	}
+
+	public Integer getCalModuleApp() {
+		return calModuleApp;
+	}
+
+	public void setCalModuleApp(Integer calModuleApp) {
+		this.calModuleApp = calModuleApp;
+	}
+
+	public Integer getCalEnvironnement() {
+		return calEnvironnement;
+	}
+
+	public void setCalEnvironnement(Integer calEnvironnement) {
+		this.calEnvironnement = calEnvironnement;
+	}
+
+	public Integer getCalVerssion() {
+		return calVerssion;
+	}
+
+	public void setCalVerssion(Integer calVerssion) {
+		this.calVerssion = calVerssion;
+	}
+
+	public void setAvancement(float avancement) {
+		this.avancement = avancement;
+	}
+
+	public Integer getNbRessourceReelle() {
+		return nbRessourceReelle;
+	}
+
+	public void setNbRessourceReelle(Integer nbRessourceReelle) {
+		this.nbRessourceReelle = nbRessourceReelle;
+	}
+
+	public float getAvancement() {
+		return avancement;
+	}
+
+	public void setAvancement(Integer avancement) {
+		this.avancement = avancement;
 	}
 
 	public long getProjectID() {
 		return projectID;
 	}
 
-	public void setBudget(String budget) {
-		this.budget = budget;
+	public void setProjectID(long projectID) {
+		this.projectID = projectID;
 	}
 
-	public void setDateDebut(String dateDebut) {
-		this.dateDebut = dateDebut;
+	public String getNomProjet() {
+		return nomProjet;
 	}
 
-	public void setDateFin(String dateFin) {
-		this.dateFin = dateFin;
+	public void setNomProjet(String nomProjet) {
+		this.nomProjet = nomProjet;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public Date getDateDebutPrevu() {
+		return dateDebutPrevu;
 	}
 
-	public void setProjectID(long projectID) {
-		this.projectID = projectID;
+	public void setDateDebutPrevu(Date dateDebutPrevu) {
+		this.dateDebutPrevu = dateDebutPrevu;
 	}
 
-	public EtatProjet getEtatProjet() {
+	public Date getDateFinPrevu() {
+		return dateFinPrevu;
+	}
+
+	public void setDateFinPrevu(Date dateFinPrevu) {
+		this.dateFinPrevu = dateFinPrevu;
+	}
+
+	public Date getDateDebutReelle() {
+		return dateDebutReelle;
+	}
+
+	public void setDateDebutReelle(Date dateDebutReelle) {
+		this.dateDebutReelle = dateDebutReelle;
+	}
+
+	public Date getDateFinReelle() {
+		return dateFinReelle;
+	}
+
+	public void setDateFinReelle(Date dateFinReelle) {
+		this.dateFinReelle = dateFinReelle;
+	}
+
+	public String getBudgetPrevu() {
+		return budgetPrevu;
+	}
+
+	public void setBudgetPrevu(String budgetPrevu) {
+		this.budgetPrevu = budgetPrevu;
+	}
+
+	public String getBudgetReelle() {
+		return budgetReelle;
+	}
+
+	public void setBudgetReelle(String budgetReelle) {
+		this.budgetReelle = budgetReelle;
+	}
+
+	public String getPhase() {
+		return phase;
+	}
+
+	public void setPhase(String phase) {
+		this.phase = phase;
+	}
+
+	public String getNbRessource() {
+		return nbRessource;
+	}
+
+	public void setNbRessource(String nbRessource) {
+		this.nbRessource = nbRessource;
+	}
+
+	public Integer getEtatProjet() {
 		return etatProjet;
 	}
 
-	public void setEtatProjet(EtatProjet etatProjet) {
+	public void setEtatProjet(Integer etatProjet) {
 		this.etatProjet = etatProjet;
 	}
 
-	public List<UserProjet> getTeamMembers() {
-		return teamMembers;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setTeamMembers(List<UserProjet> teamMembers) {
-		this.teamMembers = teamMembers;
+	
+
+
+	public Projet(long projectID, String nomProjet, String description, Date dateDebutPrevu, Date dateFinPrevu,
+			Date dateDebutReelle, Date dateFinReelle, String budgetPrevu, String budgetReelle, String phase,
+			String nbRessource, Integer etatProjet, Integer nbRessourceReelle, float avancement, Integer calMessage,
+			Integer calSprint, Integer calModuleApp, Integer calEnvironnement, Integer calVerssion, Integer calBug,
+			Integer calRelease) {
+		super();
+		this.projectID = projectID;
+		this.nomProjet = nomProjet;
+		this.description = description;
+		this.dateDebutPrevu = dateDebutPrevu;
+		this.dateFinPrevu = dateFinPrevu;
+		this.dateDebutReelle = dateDebutReelle;
+		this.dateFinReelle = dateFinReelle;
+		this.budgetPrevu = budgetPrevu;
+		this.budgetReelle = budgetReelle;
+		this.phase = phase;
+		this.nbRessource = nbRessource;
+		this.etatProjet = etatProjet;
+		this.nbRessourceReelle = nbRessourceReelle;
+		this.avancement = avancement;
+		this.calMessage = calMessage;
+		this.calSprint = calSprint;
+		this.calModuleApp = calModuleApp;
+		this.calEnvironnement = calEnvironnement;
+		this.calVerssion = calVerssion;
+		this.calBug = calBug;
+		this.calRelease = calRelease;
+	}
+
+	public Projet() {
+		super();
 	}
 
 }

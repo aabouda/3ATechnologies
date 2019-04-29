@@ -1,0 +1,18 @@
+<meta charset="UTF-8" />
+NB Total des pages : {{pageCourante+1}} /{{totalPages+1}}
+<div class="right">
+	<ul  class="pagination">
+		<li ng-class="{'disabled' : pageCourante == 0}"><a
+			ng-click="pageCourante != 0 && goToPage(0)">&laquo;</a></li>
+			
+		<li ng-class="{'disabled' : pageCourante == 0}"><a
+			ng-click="pageCourante != 0 && goToPage(pageCourante-1)">&lsaquo;</a></li>
+			
+		<li ng-class="{'disabled' : pageCourante == totalPages}"><a
+			ng-click="pageCourante != totalPages && goToPage(pageCourante+1)">&rsaquo;</a></li>
+			
+		<li ng-class="{'disabled' : pageCourante == totalPages}"><a
+			ng-click="pageCourante != totalPages && goToPage(totalPages)">&raquo></a></li>
+	</ul>
+</div>
+ 

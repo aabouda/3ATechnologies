@@ -1,0 +1,80 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu.html'"></div>  
+                 
+              <div id="step-1">
+                <u><h2 class="StepTitle">Alertes</h2></u><br><br>
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12 mail_list_column">
+                        
+                        
+                        
+                        <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						              	<th></th>
+						                <th>Amlerte</th>
+						                <th>Valeur</th>
+						                <th>Description</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              					  
+              				 <tr dir-paginate="alerte in allAlertes|orderBy:sortKey:reverse|filter:search1|itemsPerPage:30">
+	                          		
+	                          		
+	                          		
+	                          		<th><span ng-if="alerte.couleur==1"> <i class="fa fa-3x fa-exclamation-triangle bg-green"></i></span>
+			                            <span ng-if="alerte.couleur==2"> <i class="fa fa-3x fa-exclamation-triangle bg-orange"></i></span>
+			                            <span ng-if="alerte.couleur==3"> <i class="fa fa-3x fa-exclamation-triangle bg-red"></i></span>
+			                        </th>      		
+	                          		
+	                          		<th>{{alerte.description }}<small>{{alerte.couleur}}</small></th>
+			                       	<th>{{alerte.valeur}}</th>
+			                       	<th>Depassement valeur minimal: "{{alerte.minVal}}"</th>
+						            <span ng-if="alerte.maxVal <  999"> et valeur maximale "{{alerte.maxVal}}"</span>
+						            	<span ng-if="alerte.maxVal == 999"></span>
+	                        </tr>
+                        
+                        
+                        
+	                      </tbody>
+	                    </table>
+                        
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                     
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

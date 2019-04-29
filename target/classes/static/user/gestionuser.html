@@ -1,0 +1,103 @@
+
+<meta charset="utf-8">
+<div>
+	<div class="header">
+		<h2>
+			Gestion des <strong>Users</strong>
+		</h2>
+		<div class="alert alert-success" ng-click="close" ng-if="message">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong> {{message}}</strong>
+		</div>
+
+
+	</div>
+	<div class="row">
+		<div class="col-lg-12 portlets">
+			<div class="panel">
+
+				<div class="panel-content pagination2 table-responsive">
+					<a href="#/ajouteruser">
+						<button class="btn btn-primary">Ajouter User</button>
+					</a>
+
+					<form class="form-inline" align="right">
+						<div class="form-group">
+							<label>Chercher</label> <input type="text" ng-model="search"
+								class="form-control" placeholder="Chercher">
+						</div>
+					</form>
+					<br>
+
+					<table class="table table-striped table-bordered">
+				 
+						<thead>
+							<tr>
+
+								<th ng-click="sort('username')">Nom <span
+									class="glyphicon sort-icon" ng-show="sortKey=='username'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+
+								<th ng-click="sort('lastname')">Prenom <span
+									class="glyphicon sort-icon" ng-show="sortKey=='lastname'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+
+								<th ng-click="sort('email')">Email <span
+									class="glyphicon sort-icon" ng-show="sortKey=='email'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+
+								<th ng-click="sort('teleph')">Téléphonne <span
+									class="glyphicon sort-icon" ng-show="sortKey=='teleph'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+
+								<th ng-click="sort('poste')">Poste <span
+									class="glyphicon sort-icon" ng-show="sortKey=='poste'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+								<th></th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								dir-paginate="a in listeUsers|orderBy:sortKey:reverse|filter:search|itemsPerPage:20">
+								<td>{{ a.userName }}</td>
+								<td>{{ a.lastname }}</td>
+								<td>{{ a.email }}</td>
+								<td>{{ a.tele }}</td>
+								<td>{{ a.poste }}</td>
+								<td><a href="#/modifierutilisateur/{{a.userId}}">^^</a></td>
+								
+
+							</tr>
+						</tbody>
+					</table>
+
+
+					<dir-pagination-controls max-size="5" direction-links="true"
+						boundary-links="true"> </dir-pagination-controls>
+					<!--Debut  Popup Ajouter Agence -->
+
+		 
+ 
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer" style="margin-top: 150px;">
+	<div class="copyright">
+		<p class="pull-left sm-pull-reset">
+			<span>Copyright <span class="copyright">&copy;</span> 2015
+			</span> <span>3A Technologie</span>. <span>All rights reserved. </span>
+		</p>
+		<p class="pull-right sm-pull-reset">
+			 
+		</p>
+	</div>
+</div>

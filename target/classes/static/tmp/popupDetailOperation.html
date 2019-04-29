@@ -1,0 +1,77 @@
+<meta charset="UTF-8" />
+<div class="modal fade" id="myModaldee" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 861px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="exampleModalLabel">Détail</h4>
+			</div>
+			<div class="modal-body">
+				<div class="panel panel-default">
+					<div class="panel-heading"></div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Réf Acquéreur</th>
+										<th>Code acquéreur</th>
+										<th>Terminal</th>
+										<th>Réf Emetteur</th>
+										<th>Code Emetteur</th>
+										<th>Num carte</th>
+										<th>Nature message</th>
+										<th>Type transaction</th>
+										<th>Num séq</th>
+										<th>Montant</th>
+										<th>Code réponse</th>
+										<th>Code autorisation</th>
+										<th>Date expiration carte</th>
+										<th>Nom fichier d'origine</th>
+										<th>Date insertion</th>
+										<th>Heur insertion</th>
+										<th>Time</th>
+										<th>Date</th>
+										<th>Statut</th>
+										<th>Catégorie carte</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+									<tr ng-repeat="s in Smt">
+										  <td> {{ s.sT_TERMINAL }}</td>              
+										  <td> {{ s.sT_CODE_ACQUIRER }}</td>          
+										  <td> {{ s.sT_CODE_TERMINAL }}</td>          
+										  <td> {{ s.sT_INSTITUT_EMETEUR }}</td> 
+										  <td> {{ s.sT_CODE_EMETEUR }}</td>           
+										  <td> {{ s.sT_NUM_CARTE }}</td>              
+										  <td> {{ s.sT_TYPE_MESSAGE }}</td>           
+										  <td> {{ s.sT_TYPE_TRANSACTION }}</td>       
+										  <td> {{ s.sT_AUTHX_SEQ }}</td>              
+										  <td> {{ s.sT_MONTANT  | numberFilter }}</td>                
+										  <td> {{ s.sT_CODE_REPONSE }}</td>           
+										  <td> {{ s.sT_CODE_AUTO }}</td>             
+										  <td> {{ s.sT_DATE_EXPIRATION_CARTE | date:'MM-dd-yyyy' }}</td>  
+										  <td> {{ s.sT_NOM_FICHIER_ORIGINE }}</td>    
+										  <td> {{ s.sT_DATE_INSRTION | date:'MM-dd-yyyy' }}</td>          
+										  <td> {{ s.sT_HEURE_INSRTION }}</td>         
+										  <td> {{ s.sT_TIME_TRANSACTION }}</td>       
+										  <td> {{ s.sT_DATE_TRANSACTION | date:'MM-dd-yyyy' }}</td>       
+										  <td> {{ s.sT_STATUT }}</td>                 
+										  <td> {{ s.sT_CAT_CARTE }}</td>
+									</tr>
+									
+									
+									
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

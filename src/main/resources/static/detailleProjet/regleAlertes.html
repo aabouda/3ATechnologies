@@ -1,0 +1,72 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu_Config.html'"></div>  
+                 
+              <div id="step-1">
+                <u><h2 class="StepTitle">Gestion des alertes</h2></u><br><br>
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12 mail_list_column">
+                        
+                        
+                        
+                        <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						              	<th></th>
+						                <th>Alerte</th>
+						                <th>Valeur Min</th>
+						                <th>Valeur Max</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              					  
+              				 <tr dir-paginate="alerte in allAlertes|orderBy:sortKey:reverse|filter:search1|itemsPerPage:30">
+	                          		<th><span ng-if="alerte.couleur==1"> <i class="fa fa-3x fa-exclamation-triangle bg-green"></i></span>
+			                            <span ng-if="alerte.couleur==2"> <i class="fa fa-3x fa-exclamation-triangle bg-orange"></i></span>
+			                            <span ng-if="alerte.couleur==3"> <i class="fa fa-3x fa-exclamation-triangle bg-red"></i></span>
+			                        </th>    
+	                          		<th>{{alerte.description }}</th>
+			                       	<th><input type="text" class="flat" ng-model="alerte.minVal" name="min{{alerte.idRegleAlerte}}" value="{{alerte.minVal}}"  ng-change="validerMin({{alerte.idRegleAlerte}})" ></th>
+			                       	<th><input type="text" class="flat" ng-model="alerte.maxVal" name="max{{alerte.idRegleAlerte}}" value="{{alerte.maxVal}}"  ng-change="validerMax({{alerte.idRegleAlerte}})" ></th>
+	                        </tr>
+                        
+	                      </tbody>
+	                    </table>
+                        
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                     
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

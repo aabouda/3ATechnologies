@@ -29,17 +29,21 @@ public class UserProjet implements Serializable {
 	@JoinColumn(name = "idUserPK", insertable = false, updatable = false)
 	private User user;
 
+	
+	private float  tjm;
+	
 	public UserProjet() {
 		super();
 	}
 
 	
-	public UserProjet(UserProjetID userProjetID,Role role, Projet projet, User user) {
+	public UserProjet(UserProjetID userProjetID,Role role, Projet projet, User user, float tjm) {
 		super();
 		this.userProjetID = userProjetID;
 		this.role = role;
 		this.projet = projet;
 		this.user = user;
+		this.tjm = tjm;
 	}
 	
 	public UserProjet(UserProjetID userProjetID,String stringRole, Projet projet, User user) {
@@ -59,9 +63,20 @@ public class UserProjet implements Serializable {
 		}
 		this.projet = projet;
 		this.user = user;
+		this.tjm = tjm;
 	}
 	
 	
+
+
+	public float getTjm() {
+		return tjm;
+	}
+
+
+	public void setTjm(float tjm) {
+		this.tjm = tjm;
+	}
 
 
 	public List<Tache> getListTaches() {

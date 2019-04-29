@@ -1,0 +1,121 @@
+
+
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_content">
+            <!-- Smart Wizard -->
+              <div id="step-1">
+                <u><h2 class="StepTitle">{{lblAddProjetDesc}}</h2></u><br><br>
+                <form class="form-horizontal form-label-left">
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="project-name">{{lblAddProjetNom}} <span
+                      class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" ng-model="nameProject" id="nameProject" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">{{lblAddProjetDateDebutPrevu}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    
+                    <datepicker date-format="dd/MM/yyyy">
+															<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebut}}"
+																placeholder="jj/mm/yyyy" name="dateDebut" id="dateDebut" required	ng-model="dateDebut" value={{dateDebut}}> 
+																
+														</datepicker>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">{{lblAddProjetDateFinPrevu}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    
+                    
+                    <datepicker date-format="dd/MM/yyyy">
+															<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFin}}"
+																placeholder="jj/mm/yyyy" name="dateFin" id="dateFin" required	ng-model="dateFin" value={{dateDebut}}> 
+														</datepicker>
+														
+														
+                     
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Budget">{{lblAddProjetBudgetPrevu}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="number" ng-model="budget" id="budget" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nbRessource">{{lblAddProjetNbRessources}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input ng-model="nbRessource" type="number" id="nbRessource" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  
+                  
+                   <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phase">{{lblAddProjetPhase}}<span
+                      class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <!-- <input type="text" ng-model="phase" id="phase" required="required" class="form-control col-md-7 col-xs-12">  -->
+                      
+                      <select ng-model="phase" id="phase" required="required" class="form-control col-md-7 col-xs-12">
+                      		<option value="0"  selected>-----</option>
+                      		<option value="1">Demarage</option>
+                      		<option value="2">Cadrage</option>
+                      		<option value="3">Conception et planification</option>
+                      		<option value="4">Realisation </option>
+                      		<option value="5">cloture</option>
+                      </select>
+                      
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label for="Description" class="control-label col-md-3 col-sm-3 col-xs-12">{{lblAddProjetDescription}}</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <textarea ng-model="description" id="description" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+                    </div>
+                  </div>
+                  
+                  
+                  <br><br>
+                  <div class="form-group" >
+                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+                       <button ng-click="saveProject()" class="btn btn-primary" >{{lblAddProjetAjouter}}</button>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                 
+                  
+                </form>
+
+              </div>
+            
+
+            <!-- End SmartWizard Content -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

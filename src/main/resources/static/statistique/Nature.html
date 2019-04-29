@@ -1,0 +1,176 @@
+<meta charset="utf-8">
+<div>
+	<div class="header">
+		<h2>
+			Gestion des <strong> Consultation Nature Transaction</strong>
+		</h2>
+		<div class="alert alert-success" ng-click="close" ng-if="message">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong> {{message}}</strong>
+		</div>
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12 portlets">
+			<div class="panel">
+				<div class="panel-header md-panel-controls">
+
+					<i class="icon-bulb"></i> Matching <strong> Gab</strong>
+
+				</div>
+				<div class="alert alert-danger alert-dismissible fade in" role="alert" ng-if="courrier=='false'">
+						<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>Erreur</strong>
+						 	Date non valable !
+					</div>
+					
+				<div class="panel-content">
+					<div class="row">
+						<form name="frm" novalidate ng-submit="charger()">
+							<table width="100%">
+								<tr>
+									<td width="70%">
+										<table>
+											<tr>
+												<div class="row">
+													<td><label>Du</label></td>
+												<td>
+													<div class="col-md-12  form-group  ">
+														<div  class="prepend-icon"  ng-class="{ 'has-error': frm.dateDebut.$invalid, 'has-success': !frm.dateDebut.$invalid }">
+														<datepicker date-format="dd/MM/yyyy">
+															<input class="form-control has-feedback-left" placeholder="{{dateDebut}}"
+																placeholder="jj/mm/yyyy" name="dateDebut" id="dateDebut" required	ng-model="dateDebut" value={{dateDebut}}> 
+																<i class="icon-calendar"></i>
+														</datepicker>
+														</div> 
+													</div>
+												</td>
+												<td><label>Au</label></td>
+												<td>
+													<div class="col-md-12  form-group  ">
+														<div class="prepend-icon">
+														<datepicker date-format="dd/MM/yyyy">
+															<input  class="form-control has-feedback-left"  name="dateFin" id="dateFin" required placeholder="{{dateFin}}"
+																placeholder="jj/mm/yyyy"	ng-model="dateFin" value="{{dateFin}}"> 
+																<i class="icon-calendar"></i>
+														</datepicker>
+														</div>
+													 	
+													</div>
+													
+										 
+												</td>
+											</tr>
+
+											<tr>
+
+												<td><label>Agence</label></td>
+												<td>
+													<div class="input-append col-md-12  form-group ">
+														<input class="form-control" type="text"
+															ng-model="terminal" id="nom_agence" />
+													</div>
+												</td>
+												<td><label>Gab</label></td>
+												<td>
+													<div class="input-append col-md-12 form-group">
+														<input class="form-control" type="text"
+															ng-model="code_dab" />
+													</div>
+												</td>
+												<td>
+													<button type="submit" class="btn btn-primary"
+														 ng-click="chargerPagination()">Chercher</button>
+												</td>
+											</tr>
+
+
+
+										</table>
+									</td>
+
+
+								</tr>
+
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 portlets">
+			<div class="panel">
+				<div class="panel-content pagination2 table-responsive">
+
+					<form class="form-inline" align="right">
+						<div class="form-group">
+							<label>Chercher</label> <input type="text" ng-model="search"
+								class="form-control" placeholder="Chercher">
+						</div>
+					</form>
+					<br>
+					<table id="datatable-responsive"
+						class="table table-striped table-bordered" ng-init="charger()"
+						cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>Nature Transaction</th>
+								<th>Total Transaction</th>
+								<th>OnUS</th>
+								<th>National</th>
+								<th>VISA</th>
+								<th>MC</th>
+							</tr>
+						</thead>
+						<tbody >
+							<tr 
+							dir-paginate="p in ConsultationNatureTransaction|orderBy:sortKey:reverse|filter:search|itemsPerPage:10"  ng-class-odd="'odd'">
+								<td>{{p.operation}}</td>
+								<td>{{p.total}}</td>
+								<td>{{p.stb}}</td>
+								<td>{{p.nationa}}</td>
+								<td>{{p.visa}}</td>
+								<td>{{p.mc}}</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					
+					<br><br>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+		                <div class="x_panel">
+		                  <div class="x_title">
+		                    <h2>Nature </h2>
+		                    
+		                    <div class="clearfix"></div>
+		                  </div>
+		                  <div class="x_content">
+		                    <div id="graph_bar" style="width:100%; height:280px;"></div>
+		                  </div>
+		                </div>
+		              </div>
+					
+					<dir-pagination-controls max-size="5" direction-links="true"
+						boundary-links="true"> </dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer" style="margin-top: 150px;">
+	<div class="copyright">
+		<p class="pull-left sm-pull-reset">
+			<span>Copyright <span class="copyright">&copy;</span> 2015
+			</span> <span>3A Technologie</span>. <span>All rights reserved. </span>
+		</p>
+		<p class="pull-right sm-pull-reset">
+			 
+		</p>
+	</div>
+</div>

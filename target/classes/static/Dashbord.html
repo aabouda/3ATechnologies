@@ -1,0 +1,151 @@
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="row tile_count">
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> {{lblDBTotalProjet}}</span>
+          <div class="count">{{nbProjet}}</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-clock-o"></i> {{lblDBAlerte}}</span>
+          <div class="count">{{nbAlert}}</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> {{lblDBNbCollab}}</span>
+          <div class="count green">{{nbRessource}}</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> {{lblDBAvancementProjet}}</span>
+          <div class="count">{{avgAvancement}}%</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> {{lblDBBudget}}</span>
+          <div class="count">{{budgetReelle}}</div>
+        </div>
+        
+      </div>
+      <!-- /top tiles -->
+
+     
+      <br />
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="x_panel tile fixed_height_320">
+            <div  >
+              <h2>{{lblDNbAlertesProjet}}</h2>
+              <hr style='height: 0.6px;'>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <h4></h4>
+              
+              
+              
+              
+              <div class="widget_summary"  ng-repeat="m in alerteProjet">
+                <div class="w_left w_25">
+                  <span>{{m[0]}}</span>
+                </div>
+                <div class="w_center w_55">
+                  <div class="progress">
+                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{m[1]}}" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                      <span class="sr-only">{{m[1]}}% {{lblDBComplete}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="w_right w_20">
+                  <span>{{m[1]}}</span>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              
+              
+              
+              
+              
+
+             
+            
+           
+           
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="x_panel tile fixed_height_320 overflow_hidden">
+            <div >
+              <h2>{{lblDBProductiviteProjet}}</h2>
+              <hr style='height: 0.6px;'>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="" style="width:100%">
+                <tr>
+                  
+                  <th>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                      <p class="">Projet</p>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                      <p class="">{{lblDBAvancement}}</p>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                 
+                  <td>
+                    <table class="tile_info">
+                      <tr ng-repeat="m in avancementProjet">
+                        <td>
+                          <p><i class="fa fa-square green"></i>{{m[0]}} </p>
+                        </td>
+                        <td>{{m[1]}}%</td>
+                      </tr>
+                      
+                   
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      
+
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="x_panel">
+            <div >
+              <h2>{{lblDBActivitesRecentes}}</h2>
+          		<hr style='height: 0.6px;'>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="dashboard-widget-content">
+                <ul class="list-unstyled timeline widget">
+                  <li  ng-repeat="m in activiteRecentes">
+                    <div class="block">
+                      <div class="block_content">
+                        <h2 class="title">
+                          <a>{{m[0]}}</a>
+                        </h2>
+                        <div class="byline">
+                          <span>{{m[1] | date:'dd-MM-yyyy'}} </span> - <a> {{m[2]}} Hours</a>
+                        </div>
+                        <p class="excerpt">{{m[3]}}</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+</div>
+       
+      </div>
+    </div>
+    <!-- /page content -->

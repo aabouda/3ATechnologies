@@ -1,0 +1,183 @@
+
+<meta charset="utf-8">
+<div>
+	<div class="header">
+		<h2>
+			Gestion des <strong>User</strong>
+		</h2>
+		<div class="alert alert-success" ng-click="close" ng-if="message">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong> {{message}}</strong>
+		</div>
+	</div>
+	
+	<div class="alert alert-success alert-dismissible fade in" role="alert" ng-if="InsertUser==1">
+						<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>OK</strong>
+						 	Ajout Avec Succées 
+					</div>
+					
+					
+					<div class="alert alert-danger  alert-dismissible fade in" role="alert" ng-if="InsertUser==2">
+						<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<strong>Erreur</strong>
+						 	Utilisateur Existant !!
+					</div>
+	
+	
+	
+	<div class="row">
+		<div class="col-lg-8 portlets">
+			<div class="panel">
+
+				<div class="panel-content pagination2 table-responsive">
+
+
+					<div class="modal-body">
+						<div class="">
+
+
+							<br> <br>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Role</label>
+
+								<div class="col-sm-6">
+
+									<select ng-model='userroleid' class="form-control"   ng-change="modifierCl()" >
+										<option value=''>----</option>
+										<option value='Admin' >Admin</option>
+										<option value='Gestionnaire' >Gestionnaire</option>
+										<option value='Agent' >Agent</option>
+									</select>
+								
+								</div>
+							</div>
+
+							<br> <br>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Login</label>
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="username" name="username" data-placement="top" ng-maxlength="30" required>
+								</div>
+							</div>
+							<br> <br>
+
+								<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nom</label>
+
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="nom" name="nom" data-placement="top" required>
+								</div>
+							</div>
+							<br> <br>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Prenom</label>
+
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="lastname" name="lastname" data-placement="top" required>
+								</div>
+							</div>
+
+							<br> <br>
+
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email</label>
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="email" name="email" data-placement="top" required>
+								</div>
+							</div>
+
+							<br> <br>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Téléphonne</label>
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="teleph" name="teleph" data-placement="top">
+								</div>
+							</div>
+
+							<br> <br>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Poste</label>
+								<div class="col-sm-6">
+									<input class="form-control" type="text" ng-model="poste" name="poste" data-placement="top">
+								</div>
+							</div>
+
+							<br> <br>
+
+
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Password</label>
+								<div class="col-sm-6">
+									<input class="form-control" type="password" ng-model="password" name="password" data-placement="top" ng-maxlength="30"  required>
+								</div>
+							</div>
+
+							<br> <br>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Activée</label>
+									<div class="col-sm-6">
+										<input type="checkbox"   ng-model="enabled" name="enabled" id="enabled"  value="1">
+									</div>
+							</div>
+
+							<br> <br>
+							<div class="modal-body">
+								<div class="panel panel-default">
+									<div class="panel-heading"></div>
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr ng-repeat="role in roles">
+														<td><input type="checkbox" checklist-model="user.roles" checklist-value="role"></td>
+														<td><label class="col-sm-3 control-label no-padding-right"> {{role}}</label> </td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button ng-click="saveUser()" type="button"
+								class="btn btn-primary">Validé</button>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div class="footer" style="margin-top: 150px;">
+	<div class="copyright">
+		<p class="pull-left sm-pull-reset">
+			<span>Copyright <span class="copyright">&copy;</span> 2015
+			</span> <span>3A Technologie</span>. <span>All rights reserved. </span>
+		</p>
+		<p class="pull-right sm-pull-reset">
+			
+		</p>
+	</div>
+</div>

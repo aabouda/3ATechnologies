@@ -1,0 +1,175 @@
+<div class="right_col" role="main"  data-ng-init="onLoad()">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu_Config.html'"></div>  
+                 
+                 
+                 <div id="step-1">
+                <u><h2 class="StepTitle">verssion(s)</h2></u><br><br>
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-3 mail_list_column">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button" ng-click="ajouterverssion()">Ajouter verssion</button>
+                        
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="dataTables_paginate paging_simple_numbers"> </dir-pagination-controls>
+                        
+                        
+	                      <table class="table table-hover">
+	                      <tbody>
+	                        <tr dir-paginate="env in allverssion|orderBy:sortKey:reverse|filter:search1|itemsPerPage:5">
+	                          <td >
+		                          <a >
+			                          <div class="mail_list " ng-click="afficherverssion(env.idVerssion)" >
+			                            <div class="right">
+			                              <h4> - {{env.nomVerssion }} </h4>
+			                            </div>
+			                          </div>
+		                        	</a>
+	                        	</td>
+	                        </tr>
+	                      </tbody>
+	                    </table>
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="dataTables_paginate paging_simple_numbers"> </dir-pagination-controls>
+                        
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                      <!-- CONTENT MAIL -->
+                      <div class="col-sm-9 mail_view">
+                        <div class="inbox-body">
+                          <div class="mail_heading row">
+                            <div class="col-md-12">
+                              <h4> - {{nom }}</h4>
+                            </div>
+                            
+                          </div>
+                          <div class="view-mail">
+                          	 <form class="form-horizontal form-label-left"  >
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">verssion <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="nom" id="nom" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  </div>
+			                  
+			                 
+			                  <div class="form-group">
+			                    <label for="detailsSp" class="control-label col-md-2 col-sm-1 col-xs-12">Description</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="description" id="description" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  <br><br>
+			                  <div class="form-group" >
+			                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+			                       <button ng-click="validerUpdateverssion(idverssion)" class="btn btn-primary" >Valider</button>
+			                    </div>
+			                  </div>
+			                  
+			                </form>
+                          
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /CONTENT MAIL -->
+                      
+                    </div>
+                  </div>
+                </div>
+             
+             
+             
+              </div>
+            </div>
+              
+              
+              
+              <div class="modal fade" id="myModaldees" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" style="width: 861px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="exampleModalLabel">Ajouter Sprint</h4>
+							</div>
+							<div class="modal-body">
+								<div class="panel panel-default">
+									<div class="panel-heading"></div>
+									<div class="panel-body">
+										<div class="">
+											
+											<form class="form-horizontal form-label-left"  >
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Nom verssion <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="nomNv" id="nomNv" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                 
+			                 
+			                  <div class="form-group">
+			                    <label for="detailsSpNv" class="control-label col-md-2 col-sm-1 col-xs-12">Description</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="detailsNv" id="detailsNv" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                   
+			                  
+			                  <br><br>
+			                  <div class="form-group" >
+			                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+			                       <button ng-click="validerAjouterverssion()" class="btn btn-primary" >Valider</button>
+			                    </div>
+			                  </div>
+			                </form>
+                          
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+              
+              
+                <div ng-include="'../tmp/message.html'"></div>  
+              
+              
+              
+              
+              </div>
+         
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

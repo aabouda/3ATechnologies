@@ -1,0 +1,232 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+         <h3>{{lblProjet}} : <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu.html'"></div>  
+                 
+              <div id="step-1">
+                <u><h2 class="StepTitle">{{lblBug}}</h2></u><br><br>
+                
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-3 mail_list_column">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">{{lblBugCategorie}}</button>
+                        
+                        
+                        
+	                      <table class="table table-hover">
+	                      <tbody>
+	                        <tr>
+	                          <td>
+	                          	<a>
+			                     <div class="mail_list" ng-click="afficherExecution(1)">
+			                          <div class="right">
+			                              <h3>{{lblBugEtat}} </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                         <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherExecution(2)">
+			                          <div class="right">
+			                              <h3>{{lblBugImpact}} </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        <!--  
+	                       
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherExecution(3)">
+			                          <div class="right">
+			                              <h3>{{lblBugEnvironnement}}</h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                         -->
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherExecution(4)">
+			                          <div class="right">
+			                              <h3>{{lblBugVersion}} </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                       
+	                        
+	                        
+	                      
+	                      </tbody>
+	                    </table>
+                        
+                       
+                        
+                        
+                       
+                       
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                      <!-- CONTENT MAIL -->
+                      <div class="col-sm-9 mail_view">
+                        <div class="inbox-body">
+                          <div class="mail_heading row">
+                            <div class="col-md-12">
+                              <h4> {{Categorie}}</h4>
+                            </div>
+                          </div>
+                          <div class="view-mail">
+                            <p>{{description}}</p>
+                            
+			               <div class="col-md-6 col-sm-6 col-xs-12" ng-if="idCategorie==1 || idCategorie==2">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2 ng-if="idCategorie==1">{{lblBugEtat}}</h2>
+			                    <h2 ng-if="idCategorie==2">{{lblBugImpact}}</h2>			                    
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <div id="echart_donutEtat" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			             
+			              
+			              <div class="col-md-6 col-sm-6 col-xs-12"  ng-if="idCategorie==3 || idCategorie==4">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2 ng-if="idCategorie==3">{{lblBugEnvironnement}}</h2>
+			                    <h2 ng-if="idCategorie==4">{{lblBugVersion}} </h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                     <div id="graph_line" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			             
+			              
+			              
+			                
+			               <div class="col-md-6 col-sm-6 col-xs-12" ng-if="idCategorie==5">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>Environnement - Etat</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <div id="echart_donutEnvironnementEtat" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              <div class="col-md-6 col-sm-6 col-xs-12"  ng-if="idCategorie==6">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>Environnement - Impact</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <div id="echart_donutEnvironnementImpact" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			                
+			               <div class="col-md-6 col-sm-6 col-xs-12" ng-if="idCategorie==7">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>Version - Etat</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <div id="echart_donutVersionEtat" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              <div class="col-md-6 col-sm-6 col-xs-12"  ng-if="idCategorie==8">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>Version - Impact</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <div id="echart_donutVersionImpact" style="height: 350px; position: relative; background-color: transparent;"></div>
+			                  </div>
+			                </div>
+			              </div>
+			              
+                            
+                            
+                            
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /CONTENT MAIL -->
+                      
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+                
+                
+                
+                
+                
+                
+                
+                
+              </div>
+            
+              
+          
+           
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

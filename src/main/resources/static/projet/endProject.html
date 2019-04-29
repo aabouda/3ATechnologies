@@ -1,0 +1,94 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>{{lblListeProjet}}</h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+            <!-- start project list -->
+
+            <table  class="table table-striped projects table-bordered">
+              <thead>
+              <tr>
+                <th style="width: 20%">{{lblListeProjetName}}</th>
+                <th>{{lblListeProjetDateDebutReelle}}</th>
+                <th>{{lblListeProjetDateFinReelle}}</th>
+                <th>{{lblListeProjetStatus}}</th>
+                <th>{{lblListeProjetRessources}}</th>
+                <th style="width: 20%">{{lblListeProjetAction}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              
+              
+              <tr dir-paginate="pr in allProjets|orderBy:sortKey:reverse|filter:search1|itemsPerPage:10">
+                <td>
+                  <a href="#/detailleProjet/generale/{{pr.projectID}}">{{pr.nomProjet}}</a>
+                  <br />
+                  <small>{{lblListeProjetDateDebutPrevu}} : <strong>{{ pr.dateDebutPrevu |date:'dd-MM-yyyy'}}</strong></small> <br />
+                  <small>{{lblListeProjetDateFinPrevu}} : <strong>{{ pr.dateFinPrevu |date:'dd-MM-yyyy'}}</strong></small>
+                </td>
+                <td>
+                 {{ pr.dateDebutReelle |date:'dd-MM-yyyy'}}
+                </td>
+                <td class="list-inline">
+                 {{ pr.dateFinReelle |date:'dd-MM-yyyy'}}
+                </td>
+                <td class="project_progress">
+                  <div class="progress progress_sm">
+                    <div class="progress-bar bg-green" role="progressbar" 
+                    style="width: {{pr.avancement}}%"
+                    aria-valuenow="{{pr.avancement}}"
+				    aria-valuemin="0"
+				    aria-valuemax="100"></div>
+                  </div>
+                   <small>{{pr.avancement}}% {{lblListeProjetComplete}}</small><br>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==0">{{lblListeProjetAVenir}}</button>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==1">{{lblListeProjetEnCours}}</button>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==2">{{lblListeProjetCloturer}}</button>
+                </td>
+                
+                <td class="project_progress">
+                  <div class="progress progress_sm">
+                     <div class="progress-bar bg-green" role="progressbar" 
+                    style="width: {{(pr.nbRessourceReelle*100)/pr.nbRessource}}%"
+                    aria-valuenow="{{(pr.nbRessourceReelle*100)/pr.nbRessource}}"
+				    aria-valuemin="0"
+				    aria-valuemax="100"></div>
+                  </div>
+                   <small>{{(pr.nbRessourceReelle*100)/pr.nbRessource | number:2}}% {{lblListeProjetRessources}}</small><br>
+                  <button type="button" class="btn btn-primary btn-xs">{{lblListeProjetAttendu}} : {{pr.nbRessource}}</button>
+                  <button type="button" class="btn btn-success btn-xs">{{lblListeProjetReelle}} : {{pr.nbRessourceReelle}}</button>
+                </td>
+                
+                <td>
+                   <button ng-click="cloturerProjet(pr.projectID)" class="btn btn-danger" ng-if="pr.etatProjet!=2"><i  class="fa fa-trash-o"></i> {{lblListeProjetCloturer}}</button>
+                   <button ng-click="ouvrirProjet(pr.projectID)" class="btn btn-success" ng-if="pr.etatProjet==2"><i  class="fa fa-trash-o"></i> {{lblListeProjetReOuvrir}}</button>
+                   
+                   
+                </td>
+              </tr>
+             
+		</tbody>
+            </table>
+            
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" > </dir-pagination-controls>
+            
+            <div ng-include="'../tmp/message.html'"></div>  
+            <!-- end project list -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

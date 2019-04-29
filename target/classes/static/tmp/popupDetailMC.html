@@ -1,0 +1,52 @@
+<meta charset="UTF-8" />
+<div class="modal fade" id="myModaldee" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 861px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="exampleModalLabel">Détail</h4>
+			</div>
+			<div class="modal-body">
+				<div class="panel panel-default">
+					<div class="panel-heading"></div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Code Auth</th>
+										<th>Date Transaction</th>
+										<th>Montant</th>
+										<th>Code Terminale</th>
+										<th>Numéro Carte</th>
+										 <th>Remaruqe</th>
+										<th>Motif</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+									<tr ng-repeat="s in Mcc">
+										<td>{{ s.mC_CODE_AUTO}}</td>
+										<td>{{ s.mC_TIME_TRANSACTION}}</td>
+										<td>{{ s.mC_MONTANT  | numberFilter}}</td>
+										<td>{{s.mC_CODE_TERMINAL}}</td>
+										<td>{{ s.mC_NUM_CARTE }}</td>
+											 <td>{{ s.mC_REMARQUE }}</td>
+										<td>{{ s.mC_MOTIF }}</td>
+									</tr>
+									
+									
+									
+									
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

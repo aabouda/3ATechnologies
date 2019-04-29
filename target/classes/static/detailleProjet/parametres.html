@@ -1,0 +1,118 @@
+<script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/tableau_v8.js"></script>
+
+
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu_Config.html'"></div>  
+                 
+              <div id="step-1" class="col-sm-12">
+                <u><h2 class="StepTitle">Parametres</h2></u><br><br>
+                <form class="form-horizontal form-label-left"  >
+
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="project-name">Execution Batsh chaque <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                      <input type="text" ng-model="timeExecutionBatsh" id="timeExecutionBatsh" type="number" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                    <label class="control-label col-sm-1 " for="project-name">(Minutes) <span class="required">*</span>
+                    </label>
+                  </div>
+                  
+                  <br><br>
+                  <div class="form-group" >
+                    <div class="col-md-4 col-sm-4 col-xs-4" align="right">
+                       <button ng-click="saveParametre()" class="btn btn-primary" >Enregistrer</button>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-4 col-xs-4" align="right">
+                       <button ng-click="semulation()" class="btn btn-primary" >Semulation Execution</button>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-4 col-xs-4" align="right">
+                       <button ng-click="semulationAlerte()" class="btn btn-primary" >Semulation Alarte</button>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group" >
+                  	 	<div class="col-md-12 col-sm-12 col-xs-12" align="right">
+                   			<div id=tableauViz></div>
+                   		</div>
+                   </div>
+                   
+                   
+                 <!--   <p class="runCode"><button onclick="initializeViz()">Run this code</button></p> --> 
+		
+		<p class="runCode"><button onclick="reloadIFrame()">Run this code</button></p>
+
+
+		<iframe src="http://localhost:5601/app/kibana#/visualize/edit/315dd9d0-ed9e-11e8-8999-2d5c1d991cde?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-1m,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count),(enabled:!t,id:'2',params:(exclude:E1,field:fields.Exception.keyword,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderBy:'1',otherBucket:!f,otherBucketLabel:Other,size:100),schema:segment,type:terms)),params:(addLegend:!t,addTooltip:!t,isDonut:!t,labels:(last_level:!t,show:!f,truncate:100,values:!t),legendPosition:right,type:pie),title:Exp,type:pie))" height="600" width="800"></iframe>
+        
+        <iframe src="http://localhost:5601/app/kibana#/discover/4f685fe0-ee43-11e8-b7bd-974c5553a4ef?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-1m,mode:quick,to:now))&_a=(columns:!(_source),filters:!(),index:'92780e30-ed9d-11e8-8999-2d5c1d991cde',interval:auto,query:(language:kuery,query:''),sort:!(_score,desc))" height="600" width="800"></iframe>
+        
+        <div ng-include="'../tmp/message.html'"></div>  
+                 
+                  
+                </form>
+                
+               
+                
+              </div>
+          
+           
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+
+window.setInterval("reloadIFrame();", 10000);
+
+function reloadIFrame() {
+	//alert("dddd");
+ //document.frames["kibanaTest"].location.reload();
+ //document.getElementById("kibanaTest").src=kibanaTest.src;
+ //document.getElementById('kibanaTest').contentWindow.location.reload();
+ document.getElementById('kibanaTest').src += '';
+ //alert("dddd");
+}
+
+
+function initializeViz()
+{
+  var placeholderDiv = document.getElementById("tableauViz");
+  var url = "https://public.tableau.com/views/Classeur1_747/Feuille1?:embed=y&:display_count=yes&publish=yes";
+  var options = {
+    width: placeholderDiv.offsetWidth,
+    height: placeholderDiv.offsetHeight,
+    hideTabs: true,
+    hideToolbar: true,
+    onFirstInteractive: function () {
+      workbook = viz.getWorkbook();
+      activeSheet = workbook.getActiveSheet();
+    }
+  };
+  viz = new tableauSoftware.Viz(placeholderDiv, url);
+}  
+
+</script>

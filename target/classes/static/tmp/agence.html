@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="UTF-8" />
+<title>Monetique</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<link href="../bootstrap-4.0.0-alpha.4/dist/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/theme.css" />
+<link rel="stylesheet" href="../css/MoneAdmin.css" />
+<link rel="stylesheet"
+	href="../plugins/Font-Awesome/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="../plugins/uniform/themes/default/css/uniform.default.css" />
+<link rel="stylesheet"
+	href="../plugins/inputlimiter/jquery.inputlimiter.1.0.css" />
+<link rel="stylesheet" href="../plugins/chosen/chosen.min.css" />
+<link rel="stylesheet" href="../plugins/colorpicker/css/colorpicker.css" />
+<link rel="stylesheet" href="../plugins/tagsinput/jquery.tagsinput.css" />
+<link rel="stylesheet"
+	href="../plugins/daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" href="../plugins/datepicker/css/datepicker.css" />
+<link rel="stylesheet"
+	href="../plugins/timepicker/css/bootstrap-timepicker.min.css" />
+<link rel="stylesheet"
+	href="../plugins/switch/static/stylesheets/bootstrap-switch.css" />
+<link rel="stylesheet" href="css/stylePage.css" />
+<link href="../plugins/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
+
+</head>
+<body ng-app="MyCat" ng-controller="CatController">
+	<!-- MAIN WRAPPER -->
+	<div id="wrap">
+		<div id="top" ng-include="'header_menu.html'"></div>
+		<div id="left" ng-include="'left_menu.html'"></div>
+
+		<!--END MENU SECTION -->
+		<div id="content">
+			<div class="inner">
+				<div class="row">
+					<div class="col-lg-12">
+						<br><br><br>
+						<h2>Réconciliation Interne: Toutes les transactions valides</h2>
+					</div>
+				</div>
+				<hr />
+				<div ng-include="'top_menu.html'"></div>
+				<div class="row"  ng-include="'rechercheSimple.html'"></div>
+				<div ng-include="'pagination.html'"></div>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Code Authorisation</th>
+							<th>Num Carte</th>
+							<th>Montant</th>
+							<th>Num Seq</th>
+							<th>Terminal</th>
+							<th>Etat</th>
+							<th>Statut</th>
+							<th>Inf</th>
+							<th>Action</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="p in produits.content">
+							<td>{{ p.sT_DATE_DEBUT_OPERATION }}</td>
+							<td>{{ p.sT_TIME_TRANSACTION }}</td>
+							<td>{{ p.sT_CODE_AUTO }}</td>
+							<td>{{ p.sT_NUM_CARTE }}</td>
+							<td>{{ p.sT_MONTANT  | numberFilter}}</td>
+							<td>{{ p.sT_AUTHX_SEQ }}</td>
+							<td>{{ p.sT_CODE_TERMINAL }}</td>
+							<td>-</td>
+							<td>-</td>
+							<td>
+								<button type="button" class="btn btn-info btn-sm"
+									ng-click="edit(p.sT_PK)">
+									<i class="glyphicon glyphicon-info-sign"></i>
+								</button>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="right" ng-include="'pagination.html'"></div>
+				<div class="panel-body" ng-include="'popupDetailOperation.html'"></div>
+
+			</div>
+		</div>
+	</div>
+	<div id="footer" ng-include="'footer.html'"></div>
+	</div>
+
+
+
+</body>
+</html>
+<!-- GLOBAL SCRIPTS -->
+
+
+<script type="text/javascript" src="../AngularJs/angular.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+<script src="../assets/plugins/jquery-2.0.3.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../assets/js/jquery-ui.min.js"></script>
+<script src="../assets/plugins/uniform/jquery.uniform.min.js"></script>
+<script
+	src="../assets/plugins/inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+<script src="../assets/plugins/chosen/chosen.jquery.min.js"></script>
+<script src="../assets/plugins/colorpicker/js/bootstrap-colorpicker.js"></script>
+<script src="../assets/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+<script src="../assets/plugins/validVal/js/jquery.validVal.min.js"></script>
+<script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/plugins/daterangepicker/moment.min.js"></script>
+<script src="../assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script
+	src="../assets/plugins/timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="../assets/plugins/switch/static/js/bootstrap-switch.min.js"></script>
+<script
+	src="../assets/plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js"></script>
+<script src="../assets/plugins/autosize/jquery.autosize.min.js"></script>
+<script src="../assets/plugins/jasny/js/bootstrap-inputmask.js"></script>
+<script src="../assets/js/formsInit.js"></script>
+<script>
+            $(function () { formInit(); });
+    </script>
+
+<script type="text/javascript">
+       $(function() {
+               $("#datepicker").datepicker({ dateFormat: "dd/mm/yyyy" }).val()
+       });
+   </script>
+
+
+
+
+
+

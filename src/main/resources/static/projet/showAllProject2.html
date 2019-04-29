@@ -1,0 +1,93 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>{{lblListeProjet}}</h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+            <!-- start project list -->
+
+            <table  class="table table-striped projects table-bordered">
+              <thead>
+              <tr>
+                <th style="width: 20%">{{lblListeProjetName}}</th>
+                <th>{{lblListeProjetDateDebutReelle}}</th>
+                <th>{{lblListeProjetDateFinReelle}}</th>
+                <th>Nb jours depasses/gagnes</th>
+                <th>Cout depasse/gagne</th>
+                <th>Couverture</th>
+                <th>{{lblListeProjetRessources}}</th>
+                <th>Decision</th>
+                <th style="width: 20%">{{lblListeProjetAction}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              
+              
+              <tr dir-paginate="pr in allProjets|orderBy:sortKey:reverse|filter:search1|itemsPerPage:10">
+                <td>
+                  <a href="#/detailleProjet/generale/{{pr.projectID}}">{{pr.nomProjet}}</a>
+                  <br />
+                  <small>{{lblListeProjetDateDebutPrevu}} : <strong>{{ pr.dateDebutPrevu |date:'dd-MM-yyyy'}}</strong></small> <br />
+                  <small>{{lblListeProjetDateFinPrevu}} : <strong>{{ pr.dateFinPrevu |date:'dd-MM-yyyy'}}</strong></small>
+                </td>
+                
+                <td>{{ pr.dateDebutReelle |date:'dd-MM-yyyy'}}</td>
+                <td class="list-inline">{{ pr.dateFinReelle |date:'dd-MM-yyyy'}}</td>
+                <td class="list-inline">{{ (pr.dateFinReelle - pr.dateDebutReelle)/(1000 * 60 * 60 * 24) }}</td>
+                <td>{{pr.budgetPrevu - pr.budgetReelle}}</td>
+                <td class="project_progress">
+                  <div class="progress progress_sm">
+                    <div class="progress-bar bg-green" role="progressbar" 
+                    style="width: {{pr.avancement}}%"
+                    aria-valuenow="{{pr.avancement}}"
+				    aria-valuemin="0"
+				    aria-valuemax="100"></div>
+                  </div>
+                  <small>{{pr.avancement}}% {{lblListeProjetComplete}}</small><br>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==0">{{lblListeProjetAVenir}}</button>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==1">{{lblListeProjetEnCours}}</button>
+                  <button type="button" class="btn btn-success btn-xs"  ng-if="pr.etatProjet==2">{{lblListeProjetCloturer}}</button>
+                </td>
+                
+                <td class="project_progress">
+                  <div class="progress progress_sm">
+                     <div class="progress-bar bg-green" role="progressbar" 
+                    style="width: {{(pr.nbRessourceReelle*100)/pr.nbRessource}}%"
+                    aria-valuenow="{{(pr.nbRessourceReelle*100)/pr.nbRessource}}"
+				    aria-valuemin="0"
+				    aria-valuemax="100"></div>
+                  </div>
+                  <small>{{(pr.nbRessourceReelle*100)/pr.nbRessource | number:2}}% {{lblListeProjetRessources}}</small><br>
+                  <button type="button" class="btn btn-primary btn-xs">{{lblListeProjetAttendu}} : {{pr.nbRessource}}</button>
+                  <button type="button" class="btn btn-success btn-xs">{{lblListeProjetReelle}} : {{pr.nbRessourceReelle}}</button>
+                </td>
+                
+                <td>Decision</td>
+                
+                <td>
+                  <a href="#/detailleProjet/generale/{{pr.projectID}}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> {{lblListeProjetDetail}} </a>
+                </td>
+              </tr>
+             
+		</tbody>
+            </table>
+            
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" > </dir-pagination-controls>
+            <!-- end project list -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

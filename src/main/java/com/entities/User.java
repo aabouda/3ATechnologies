@@ -1,141 +1,191 @@
 package com.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long userID;
-	private String firstName;
-	private String lastName;
-	@NotNull
-	@Column(unique = true)
-	private String username;
-	@NotNull
-	private String password;
-	@NotNull
-	@Column(unique = true)
-	private String email;
-	private String picture;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	@JsonIgnore
-	private List<UserProjet> projets;
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @Column(name="userid")
+    private Long userId;
 
-	public User() {
+	@Column(name = "username")
+    private String userName;   
+
+	@Column(name = "password")
+    private String password;   
+
+	@Column(name = "email")
+    private String email;
+    
+	@Column(name ="enabled")
+	private int enabled;
+	
+	public User(){
 		super();
+		
+	}
+ 
+	
+	
+    private String poste;  
+    private String lastname; 
+    private String nom; 
+    private String tele; 
+    
+    
+    
+	
+	@ManyToOne
+	@JoinColumn(name = "idmodule")
+	private Module module;
+
+	@ManyToOne
+	@JoinColumn(name = "userroleid")
+	private Role userrole;
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public User(long userID, String firstName, String lastName) {
-		super();
-		this.userID = userID;
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-
-
-	public User(long userID, String firstName, String lastName, String username, String password, String email,
-			String picture) {
-		this.userID = userID;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.picture = picture;
+	public String getUserName() {
+		return userName;
 	}
 
-	public User(String firstName, String lastName, String username, String password, String email, String picture) {
-
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.picture = picture;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public String getPicture() {
-		return picture;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public long getUserID() {
-		return userID;
-	}
-
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public int getEnabled() {
+		return enabled;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 
-	public void setPassword(String password) {
+	public String getPoste() {
+		return poste;
+	}
+
+	public void setPoste(String poste) {
+		this.poste = poste;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getTele() {
+		return tele;
+	}
+
+	public void setTele(String tele) {
+		this.tele = tele;
+	}
+
+	
+
+	
+
+	public Module getModule() {
+		return module;
+	}
+
+	public void setModule(Module module) {
+		this.module = module;
+	}
+
+	public Role getUserrole() {
+		return userrole;
+	}
+
+	public void setUserrole(Role userrole) {
+		this.userrole = userrole;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public User(Long userId, String userName, String password, String email, int enabled, String poste, String lastname,
+			String nom, String tele, Module module, Role userrole) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
 		this.password = password;
+		this.email = email;
+		this.enabled = enabled;
+		this.poste = poste;
+		this.lastname = lastname;
+		this.nom = nom;
+		this.tele = tele;
+		this.module = module;
+		this.userrole = userrole;
 	}
 
-	public void setPicture(String picture) {
-		this.picture = picture;
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email=" + email
+				+ ", enabled=" + enabled + ", poste=" + poste + ", lastname=" + lastname + ", nom=" + nom + ", tele="
+				+ tele + ", module=" + module + "]";
 	}
-
-	public void setUserID(long userID) {
-		this.userID = userID;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public List<UserProjet> getProjets() {
-		return projets;
-	}
-
-	public void setProjets(List<UserProjet> projets) {
-		this.projets = projets;
-	}
-
+	
+	
+ 
+	public String MD5(String md5) {
+		   try {
+		        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+		        byte[] array = md.digest(md5.getBytes());
+		        StringBuffer sb = new StringBuffer();
+		        for (int i = 0; i < array.length; ++i) {
+		          sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+		       }
+		        return sb.toString();
+		    } catch (java.security.NoSuchAlgorithmException e) {
+		    }
+		    return null;
+		}
+	
+	
+  
 }

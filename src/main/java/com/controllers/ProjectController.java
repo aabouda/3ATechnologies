@@ -34,23 +34,7 @@ public class ProjectController {
 	private String projectNameToAdd;
 	private long projectIDtoUpdate;
 
-	@PostMapping("projet")
-	public void CreateProject(@RequestBody Projet projet) throws ParseException {
-		synchronized (this) {
-			LocalDate now = java.time.LocalDate.now();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
-			LocalDate dateDebut = LocalDate.parse(projet.getDateDebut(), formatter);
-			if ((now.toString()).equals(projet.getDateDebut()) || ((dateDebut.isBefore(now) && dateFin.isAfter(now)))) {
-				projet.setEtatProjet(EtatProjet.enCours);
-			} else {
-				projet.setEtatProjet(EtatProjet.àVenir);
-			}
-			this.projectNameToAdd = projet.getName();
-
-			service.addProject(projet);
-		}
-	}
+	
 
 	@PostMapping("addTeamMembers")
 	public void addTeamMembers(@RequestBody List<UserProjet> Lup) throws ParseException {
@@ -119,7 +103,7 @@ public class ProjectController {
 
 	@PutMapping("projet")
 	public ResponseEntity<Projet> updateProjet(@RequestBody Projet projet) {
-		this.projectIDtoUpdate = projet.getProjectID();
+		/*this.projectIDtoUpdate = projet.getProjectID();
 		LocalDate now = java.time.LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dateFin = LocalDate.parse(projet.getDateFin(), formatter);
@@ -128,7 +112,7 @@ public class ProjectController {
 			projet.setEtatProjet(EtatProjet.enCours);
 		} else {
 			projet.setEtatProjet(EtatProjet.àVenir);
-		}
+		}*/
 		service.updateProject(projet);
 		return new ResponseEntity<Projet>(projet, HttpStatus.OK);
 	}

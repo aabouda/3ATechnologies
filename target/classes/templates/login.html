@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example  </title>
+       
+      
+
+	   <link href="_assets/css/app.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body class="security-app">
+    <div class="details">
+		<br/><br/>
+		<h2>Authentications</h2>
+		 
+	</div>
+               
+        <form th:action="@{/login}" method="post">
+        <div class="lc-block">
+		 
+            <div> <input type="text" class="style-4" placeholder="User Name"  name="username"/></div>
+            <div> <input type="password" class="style-4" placeholder="Password"  name="password"/> </div>
+            <div><input type="submit" value="Sign In" class="button red small" /></div>
+ 
+			 
+			 	<div th:if="${param.error ne null}">
+            	<div class="alert-danger">Nom d'utilisateur et mot de passe non valides.</div>
+        </div>
+			 
+			 
+			<div th:if="${param.logout ne null}">
+            	<div class="alert-normal">Vous avez été déconnecté.</div>
+        </div>
+			
+			
+			<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+			</div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,165 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>{{lblProjet}} : <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu.html'"></div>  
+                 
+              <div id="step-1" class="col-sm-9">
+                <u><h2 class="StepTitle">{{lblAddProjetDesc}}</h2></u><br><br>
+                <form class="form-horizontal form-label-left"  >
+
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="project-name">{{lblAddProjetNom}} <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                      <input type="text" ng-model="nameProject" id="nameProject" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12">{{lblAddProjetDateDebutPrevu}}<span class="required">*</span> </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    	<datepicker date-format="dd/MM/yyyy">
+							<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutPrevu}}"
+									placeholder="jj/mm/yyyy" name="dateDebutPrevu" id="dateDebutPrevu" required	ng-model="dateDebutPrevu" value="{{dateDebutPrevu}}"> 
+						</datepicker>
+                    </div>
+                    
+                     <label class="control-label col-md-2 col-sm-1 col-xs-12">{{lblAddProjetDateDebutReelle}}<span class="required">*</span> </label>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    	<datepicker date-format="dd/MM/yyyy">
+							<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutReelle}}"
+									placeholder="jj/mm/yyyy" name="dateDebutReelle" id="dateDebutReelle" required	ng-model="dateDebutReelle" value="{{dateDebutReelle}}"> 
+						</datepicker>
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12">{{lblAddProjetDateFinPrevu}}<span class="required">*</span></label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    	<datepicker date-format="dd/MM/yyyy">
+							<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinPrevu}}"
+									placeholder="jj/mm/yyyy" name="dateFinPrevu" id="dateFinPrevu" required	ng-model="dateFinPrevu" value="{{dateFinPrevu}}"> 
+						</datepicker>
+					</div>
+					
+					
+					 <label class="control-label col-md-2 col-sm-1 col-xs-12">{{lblAddProjetDateFinRelle}}<span class="required">*</span></label>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    	<datepicker date-format="dd/MM/yyyy">
+							<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinReelle}}"
+									placeholder="jj/mm/yyyy" name="dateFinReelle" id="dateFinReelle" required	ng-model="dateFinReelle" value="{{dateFinReelle}}"> 
+						</datepicker>
+					</div>
+					
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="BudgetPrevu">{{lblAddProjetBudgetPrevu}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-xs-12">
+                      <input ng-model="budgetPrevu"    id="budgetPrevu" type="number" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                    
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="BudgetReelle">{{lblAddProjetBudgetReelle}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 col-xs-12">
+                      <input ng-model="budgetReelle"   id="budgetReelle" type="number" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                    
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="nbRessourcePrevu">{{lblAddProjetNbRessources}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-xs-12">
+                      <input ng-model="nbRessourcePrevu" id="nbRessourcePrevu" type="number"  required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                    
+                    
+                     <label class="control-label col-md-2 col-sm-1 col-xs-12" for="nbRessourceReelle">{{lblAddProjetNbRessourcesReelle}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 col-xs-12">
+                      <input ng-model="nbRessourceReelle" id="nbRessourceReelle" type="number" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  
+                  
+                   <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="phase">{{lblAddProjetPhase}}<span class="required">*</span>  </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                     <!-- <input type="text" ng-model="phase" id="phase" required="required" class="form-control col-md-7 col-xs-12"> -->
+                      
+                      <select ng-model="phase" id="phase" required="required" class="form-control col-md-7 col-xs-12">
+                      		<option value="0">-----</option>
+                      		<option value="1">Demarage</option>
+                      		<option value="2">Cadrage</option>
+                      		<option value="3">Conception et planification</option>
+                      		<option value="4">Realisation </option>
+                      		<option value="5">cloture</option>
+                      </select>
+                      
+                    </div>
+                    
+                    
+                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="avancement">{{lblAddProjetAvancement}}<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 col-xs-12">
+                      <input ng-model="avancement" id="avancement" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                    
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label for="Description" class="control-label col-md-2 col-sm-1 col-xs-12">{{lblAddProjetDescription}}</label>
+                    <div class="col-md-9 col-sm-6 col-xs-12">
+                      <textarea ng-model="description" id="description" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+                    </div>
+                  </div>
+                  
+                  
+                  <br><br>
+                  <div class="form-group" >
+                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+                       <button ng-click="saveProject()" class="btn btn-primary" >{{lblAddProjetValider}}</button>
+                    </div>
+                  </div>
+                  
+                  
+                   <div ng-include="'../tmp/message.html'"></div>  
+                  
+                  
+                </form>
+              </div>
+           
+               <div class="col-md-3 col-sm-3 col-xs-3">
+                  <div class="x_content">
+                    <div id="echart_gauge" style="height:370px;"></div>
+                  </div>
+              </div>
+            
+          
+           
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

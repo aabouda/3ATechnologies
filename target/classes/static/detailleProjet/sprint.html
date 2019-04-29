@@ -1,0 +1,591 @@
+<div class="right_col" role="main"  data-ng-init="onLoad()">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu.html'"></div>  
+                 
+                 
+                 <div id="step-1">
+                <u><h2 class="StepTitle">Sprints</h2></u><br><br>
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-3 mail_list_column">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button" ng-click="ajouterSprint()">Ajouter Sprint</button>
+                        
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="dataTables_paginate paging_simple_numbers"> </dir-pagination-controls>
+                        
+                        
+	                      <table class="table table-hover">
+	                      <tbody>
+	                        <tr dir-paginate="sprint in allSprints|orderBy:sortKey:reverse|filter:search1|itemsPerPage:5">
+	                          <td >
+		                          <a >
+			                          <div class="mail_list " ng-click="afficherSprint(sprint.idSp)" ng-class="{'well' : sprint.avancementSp == 100 }">
+			                            <div class="right">
+			                              <h4> - {{sprint.resumeSp }} </h4>
+			                              <p>{{sprint.dateDebutEstimeSp | date:'dd-MM-yyyy'}} - {{sprint.dateFinEstimeSp | date:'dd-MM-yyyy'}}</p>
+			                              <p>{{sprint.dateDebutReels | date:'dd-MM-yyyy'}} - {{sprint.dateFinReels | date:'dd-MM-yyyy'}}</p>
+			                            </div>
+			                          </div>
+		                        	</a>
+	                        	</td>
+	                        </tr>
+	                      </tbody>
+	                    </table>
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" class="dataTables_paginate paging_simple_numbers"> </dir-pagination-controls>
+                        
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                      <!-- CONTENT MAIL -->
+                      <div class="col-sm-9 mail_view">
+                        <div class="inbox-body">
+                          <div class="mail_heading row">
+                            <div class="col-md-8">
+                              <h4> - {{resumeSp }}</h4>
+                            </div>
+                            <div class="col-md-4 text-right"> <h4 class="date"> {{avancementSp}} % </h4></div>
+                          </div>
+                          <div class="view-mail">
+                          	 <form class="form-horizontal form-label-left"  >
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Nom du Sprint <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="resumeSp" id="resumeSp" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date debut prevu<span class="required">*</span> </label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutEstimeSp}}"
+												placeholder="jj/mm/yyyy" name="dateDebutEstimeSp" id="dateDebutEstimeSp" required	ng-model="dateDebutEstimeSp"> 
+									</datepicker>
+			                    </div>
+			                    
+			                     <label class="control-label col-md-2 col-sm-1 col-xs-12">Date debut Reelle<span class="required">*</span> </label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	{{dateDebutReels | date:'dd-MM-yyyy'}}
+			                    	
+			                    </div>
+			                    
+			                  </div>
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date fin prevu<span class="required">*</span></label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinEstimeSp}}"
+												placeholder="jj/mm/yyyy" name="dateFinEstimeSp" id="dateFinEstimeSp" required	ng-model="dateFinEstimeSp" value="{{dateFinEstimeSp}}"> 
+									</datepicker>
+								</div>
+								
+								
+								 <label class="control-label col-md-2 col-sm-1 col-xs-12">Date fin Relle<span class="required">*</span></label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	{{dateFinReels | date:'dd-MM-yyyy'}}
+								</div>
+								
+			                  </div>
+			                  <div class="form-group">
+			                    <label for="detailsSp" class="control-label col-md-2 col-sm-1 col-xs-12">Description</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="detailsSp" id="detailsSp" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                   <div class="form-group">
+			                    <label for="commentairesSp" class="control-label col-md-2 col-sm-1 col-xs-12">Commentaire</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="commentairesSp" id="commentairesSp" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  <br><br>
+			                  <div class="form-group" >
+			                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+			                       <button ng-click="validerUpdateSprint(idSp)" class="btn btn-primary" >Valider Modification</button>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  <h2 class="StepTitle">Liste des Users Story</h2>
+			                  
+			                  
+			                  
+								<button ng-click="ajouterUS(idSp)" class="btn btn-primary" ><i class="fa fa-plus">Ajouter un Users Story</i></button>
+								
+			                  
+			                   <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th style="width: 20%">Resume</th>
+						                <th>Date Debut</th>
+						                <th>Date Fin</th>
+						                <th>Heure</th>
+						                <th>Statut</th>
+						                <th>Avancement</th>
+						                <th>Module</th>
+						                <th>Type</th>
+						                <th>Priorite</th>
+						                <th>complexite</th>
+						                <th>Action</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr dir-paginate="us in allUs|orderBy:sortKey:reverse|filter:search1|itemsPerPage:10">
+						                <td> {{us.resumeUs}} </td>
+						                <td> {{us.dateDebutEstimeUs | date:'dd-MM-yyyy'}}<br>{{us.dateDebutReelsUs | date:'dd-MM-yyyy'}} </td>
+						                <td> {{us.dateFinEstimeUs | date:'dd-MM-yyyy'}}<br>{{us.dateFinReelsUs | date:'dd-MM-yyyy'}} </td>
+						                <td> {{us.heuresEstimeUs}}<br>{{us.heuresReelsUs}} </td>
+						                <td> <span ng-if="us.statutUs == 0 "> A faire </span>
+											<span ng-if="us.statutUs == 1 "> En traitement </span>
+											<span ng-if="us.statutUs == 2 "> A valider </span>
+											<span ng-if="us.statutUs == 3 "> Complete </span> 
+										</td>
+						                <td> {{us.avancementUs}} % </td>
+						                <td> {{us.moduleUs}} </td>
+						                <td>
+						                	<span ng-if="us.typeUs == 0 "> - </span>
+											<span ng-if="us.typeUs == 1 "> Amelioration </span>
+											<span ng-if="us.typeUs == 2 "> Correction </span>
+											<span ng-if="us.typeUs == 3 "> Modification </span>
+											<span ng-if="us.typeUs == 4 "> Ajout </span>
+											<span ng-if="us.typeUs == 5 "> Probleme </span>
+						                </td>
+						                <td>
+						                	<span ng-if="us.prioriteUs == 0 "> - </span>
+											<span ng-if="us.prioriteUs == 1 "> Urgente </span>
+											<span ng-if="us.prioriteUs == 2 "> Elevee </span>
+											<span ng-if="us.prioriteUs == 3 "> Normale </span>
+											<span ng-if="us.prioriteUs == 4 "> Basse </span>
+						                </td>
+						                <td> {{us.forceUs}} </td>
+						                <td>
+						                	<button ng-click="afficherUS(us.idUserStory)" class="btn btn-primary btn-xs" ><i class="fa fa-pencil-square-o"></i></button>
+						                	<button ng-click="supprimerUS(us.idUserStory)" class="btn btn-warning btn-xs" ><i class="fa fa-minus"></i></button>
+						                </td>
+              						</tr>
+            					</tbody>
+           					 </table>
+			                  
+			                  
+			                  
+			                  
+			                </form>
+                          
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /CONTENT MAIL -->
+                      
+                    </div>
+                  </div>
+                </div>
+             
+             
+             
+              </div>
+            </div>
+              
+              
+              
+              <div class="modal fade" id="myModaldees" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" style="width: 861px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="exampleModalLabel">Ajouter Sprint</h4>
+							</div>
+							<div class="modal-body">
+								<div class="panel panel-default">
+									<div class="panel-heading"></div>
+									<div class="panel-body">
+										<div class="">
+											
+											<form class="form-horizontal form-label-left"  >
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Nom du Sprint <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="resumeSpNv" id="resumeSpNv" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date debut prevu<span class="required">*</span> </label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutEstimeSpNv}}"
+												placeholder="jj/mm/yyyy" name="dateDebutEstimeSpNv" id="dateDebutEstimeSpNv" required	ng-model="dateDebutEstimeSpNv" > 
+									</datepicker>
+			                    </div>
+			                    
+			                     <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span> </label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+			                    </div>
+			                    
+			                  </div>
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date fin prevu<span class="required">*</span></label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinEstimeSpNv}}"
+												placeholder="jj/mm/yyyy" name="dateFinEstimeSpNv" id="dateFinEstimeSpNv" required	ng-model="dateFinEstimeSpNv" value="{{dateFinEstimeSpNv}}"> 
+									</datepicker>
+								</div>
+								
+								
+								 <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span></label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+								</div>
+								
+			                  </div>
+			                  <div class="form-group">
+			                    <label for="detailsSpNv" class="control-label col-md-2 col-sm-1 col-xs-12">Description</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="detailsSpNv" id="detailsSpNv" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                   <div class="form-group">
+			                    <label for="commentairesSpNv" class="control-label col-md-2 col-sm-1 col-xs-12">Commentaire</label>
+			                    <div class="col-md-9 col-sm-6 col-xs-12">
+			                      <textarea ng-model="commentairesSpNv" id="commentairesSpNv" class="form-control col-md-7 col-xs-12" rows="5"></textarea>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  <br><br>
+			                  <div class="form-group" >
+			                    <div class="col-md-12 col-sm-12 col-xs-12" align="right">
+			                       <button ng-click="validerAjouterSprint()" class="btn btn-primary" >Valider</button>
+			                    </div>
+			                  </div>
+			                </form>
+                          
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+              
+              
+              
+              
+               
+              
+              
+              
+              
+              
+              
+              
+              <div class="modal fade" id="myModaldeesUS" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" style="width: 861px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="exampleModalLabel">Ajouter User Story</h4>
+							</div>
+							<div class="modal-body">
+								<div class="panel panel-default">
+									<div class="panel-heading"></div>
+									<div class="panel-body">
+										<div class="">
+											
+											<form class="form-horizontal form-label-left"  >
+			                 
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">User Story <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="resumeUS" id="resumeUS" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date debut Estimee<span class="required">*</span> </label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutEstUS}}"
+												placeholder="jj/mm/yyyy" name="dateDebutEstUS" id="dateDebutEstUS" required	ng-model="dateDebutEstUS" > 
+									</datepicker>
+			                    </div>
+			                    
+			                     <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span> </label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+			                    </div>
+			                    
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                   
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date debut <span class="required">*</span> </label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateDebutUS}}"
+												placeholder="jj/mm/yyyy" name="dateDebutUS" id="dateDebutUS" required	ng-model="dateDebutUS" > 
+									</datepicker>
+			                    </div>
+			                    
+			                     <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span> </label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+			                    </div>
+			                    
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date fin Estimee<span class="required">*</span></label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinEstUS}}"
+												placeholder="jj/mm/yyyy" name="dateFinEstUS" id="dateFinEstUS" required	ng-model="dateFinEstUS" value="{{dateFinEstUS}}"> 
+									</datepicker>
+								</div>
+								
+								
+								 <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span></label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+								</div>
+								
+			                  </div>
+			                  
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12">Date fin<span class="required">*</span></label>
+			                    <div class="col-md-3 col-sm-6 col-xs-12">
+			                    	<datepicker date-format="dd/MM/yyyy">
+										<input class="form-control has-feedback-left col-md-6 col-xs-12" placeholder="{{dateFinUS}}"
+												placeholder="jj/mm/yyyy" name="dateFinUS" id="dateFinUS" required	ng-model="dateFinUS" value="{{dateFinUS}}"> 
+									</datepicker>
+								</div>
+								
+								
+								 <label class="control-label col-md-2 col-sm-1 col-xs-12"><span class="required">*</span></label>
+			                    <div class="col-md-4 col-sm-6 col-xs-12">
+			                    	
+								</div>
+								
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Nb Heure Estimee<span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="nbHuereEst" id="nbHuereEst" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Nb Heure <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="nbHuere" id="nbHuere" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Statut <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      
+			                      
+			                      <select ng-model="statut" id="statut">
+										<option value="1">En traitement</option>
+										<option value="2">A valider</option>
+										<option value="3">Complete</option>
+								</select>
+			                      
+			                      
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Avancement <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="avancementUS" id="avancementUS" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Module <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="module" id="module" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Type <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="typeUS" id="typeUS" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Priorite <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <select ng-model="priorite" id="priorite">
+										<option value="0">-</option>
+										<option value="1">Amelioration</option>
+										<option value="2">Correction</option>
+										<option value="3">Modification</option>
+										<option value="4">Ajout</option>
+										<option value="5">Probleme</option>
+									</select>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">complexite <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <select ng-model="complexite" id="complexite">
+										<option value="0">-</option>
+										<option value="1">Urgente</option>
+										<option value="2">Elevee</option>
+										<option value="3">Normale</option>
+										<option value="4">Basse</option>
+									</select>
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Action <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="actionUS" id="actionUS" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Force <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="force_us" id="force_us" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                   <div class="form-group">
+			                    <label class="control-label col-md-2 col-sm-1 col-xs-12" for="resumeSp">Details  <span class="required">*</span>
+			                    </label>
+			                    <div class="col-md-9 col-sm-12 col-xs-12">
+			                      <input type="text" ng-model="detailsUS" id="detailsUS" required="required" class="form-control col-md-7 col-xs-12">
+			                    </div>
+			                  </div>
+			                  
+			                  
+			                  
+			                  
+			                  
+			                  
+			                  
+			                  <br><br>
+			                  <div class="form-group" >
+			                    <div class="col-md-6 col-sm-6 col-xs-6" align="right">
+			                       <button ng-click="validerAjouterUS()" class="btn btn-primary" >Valider</button>
+			                    </div>
+			                    
+			                    <div class="col-md-6 col-sm-6 col-xs-6" align="right">
+			                       <button ng-click="Quitter()" class="btn btn-red" >Quitter</button>
+			                    </div>
+			                    
+			                  </div>
+			                </form>
+                          
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+              
+              
+              
+               <div ng-include="'../tmp/message.html'"></div>  
+              
+              
+              
+              
+              </div>
+         
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

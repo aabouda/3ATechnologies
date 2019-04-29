@@ -22,6 +22,7 @@ public class Tache implements Serializable {
 	private String userStory;
 	private String tacheName;
 	private int estimation;
+	
 	@ManyToOne
 	private UserProjet userProjet;
 

@@ -1,0 +1,887 @@
+<div class="right_col" role="main" ng-init="total = 0" ng-init="total2 = 0">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Projet <small>{{nameProject}}</small></h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+               <div ng-include="'../tmp/top_menu.html'"></div>  
+                 
+              <div id="step-1">
+                <u><h2 class="StepTitle">SAD</h2></u><br><br>
+                
+                
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-3 mail_list_column">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">Categorie</button>
+                        
+                        
+
+
+
+                        
+	                      <table class="table table-hover">
+	                      <tbody>
+	                        <tr>
+	                          <td>
+	                          	<a>
+			                     <div class="mail_list" ng-click="afficherSad(1)">
+			                          <div class="right">
+			                              <h3>Avancement </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        <!-- 
+	                         <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(2)">
+			                          <div class="right">
+			                              <h3>Bug </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                         -->
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(3)">
+			                          <div class="right">
+			                              <h3>Cout </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(4)">
+			                          <div class="right">
+			                              <h3>Depassement </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                       
+
+
+
+
+
+	                        
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(5)">
+			                          <div class="right">
+			                              <h3>Imprevus </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(6)">
+			                          <div class="right">
+			                              <h3>Ecarts </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                        
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(7)">
+			                          <div class="right">
+			                              <h3>Risques </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(8)">
+			                          <div class="right">
+			                              <h3>Ressources</h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                        
+	                        <tr>
+	                        	<td>
+	                        	<a>
+			                     <div class="mail_list" ng-click="afficherSad(9)">
+			                          <div class="right">
+			                              <h3>Resultats </h3>
+			                          </div>
+			                      </div>
+			                      </a>
+	                        	</td>
+	                        </tr>
+	                      </tbody>
+	                    </table>
+                        
+                       
+                        
+                        
+                       
+                       
+                      </div>
+                      <!-- /MAIL LIST -->
+
+                      <!-- CONTENT MAIL -->
+                      <div class="col-sm-9 mail_view">
+                        <div class="inbox-body">
+                          <div class="mail_heading row">
+                            <div class="col-md-12">
+                              <h4> {{Categorie}}</h4>
+                            </div>
+                          </div>
+                          <div class="view-mail">
+                            <p>{{description}}</p>
+                            
+			               <div class="col-md-12 col-sm-12 col-xs-12" ng-if="idCategorie==1">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>AVANCEMENT</h2>		                    
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              					  
+              					  	<tr>
+										<td>Avancement % en temps</td>
+										<td> Part du projet deja realisee en temps par rapport a l ensemble de projet</td>
+										<td>(Delai realise / delai  prevu) *100</td>
+										<td>{{avancementTemps}}</td>
+									</tr>
+									
+									<tr>
+										<td>Avancement % en quantites</td>
+										<td>Part du projet deja realisee en cas de test sur l ensemble de projet </td>
+										<td>(volume realise / volume prevu) *100</td>
+										<td>{{avancementQuantites}}</td>
+									</tr>
+									
+									<tr>
+										<td>Avancement %  en taches</td>
+										<td>Part du projet deja realisee en tache sur l ensemble de projet</td>
+										<td>(taches realise / taches prevu) *100</td>
+										<td>{{avancementTaches}}</td>
+									</tr>
+									
+									<tr>
+										<td>Taux de retard</td>
+										<td>Valeur du retard exprime en pourcentage</td>
+										<td>(Quantites, delais ou volumes non realises / Quantites, delais ou volumes prevus) x 100</td>
+										<td>{{tauxRetard}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  
+			                  
+			                   
+			                  
+			                  
+			                  
+			                  
+			                </div>
+			              </div>
+			              
+			             
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==2">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>BUG</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                     <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Total bug actualise</td>
+										<td>Nb de bug total trouve sur la Part du projet deja realisee</td>
+										<td>somme des bugs</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb de bug bloquants actualise</td>
+										<td>Nb de bug bloquant trouve sur la Part du projet deja realisee</td>
+										<td>somme des bugs a la criticite "bloquant"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>NB de bug majeurs actualise</td>
+										<td>Nb de bug majeurs  trouve sur la Part du projet deja realisee</td>
+										<td>somme des bugs  a la criticite  "majeur"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb de bug mineurs</td>
+										<td>Nb de bug mineurs  trouve sur la Part du projet deja realisee</td>
+										<td>somme des bugs a la criticite  "mineur"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb de bug affecte dev</td>
+										<td>Nb de bug affecte pour correction sur la Part du projet deja realisee</td>
+										<td>somme des bugs au statut "affecte"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb de bug a valider en test</td>
+										<td>Nb de bug affecte  pour validation de correction (test) sur la Part du projet deja realisee</td>
+										<td> somme des bugs au statut "valide"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb de bug en arbitrage</td>
+										<td>Nb de bug  en arbitrage (suspens) sur la Part du projet deja realisee</td>
+										<td>somme des bugs au statut "arbitrage"/ "en suspens"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Nb Total bug non pertinent</td>
+										<td>Nb de bug  ferme avant correction sur la Part du projet deja realisee</td>
+										<td>somme des bugs au statut "not a bug"</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Temps moyen de traitement de bug</td>
+										<td>Duree moyenne de correction d une anomalie depuis son ouverture</td>
+										<td>somme (date fermeture - date ouverture) total bugs / Nb total des bugs</td>
+										<td>{{}}</td>
+									</tr>
+									
+									
+									<tr>
+										<td>Densite defaut</td>
+										<td>Le Nb de bug par rapport le nombre de modules ou exigences validees </td>
+										<td>Nbre total bugs / Nbre d exigences (modules) realisees</td>
+										<td>{{}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			             
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			                
+			               <div class="col-md-12 col-sm-12 col-xs-12" ng-if="idCategorie==3">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>COUT</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Cout reel du projet</td>
+										<td>Ensemble des charges reelle enregistrees exprime en J/H </td>
+										<td>somme de charges enregistrees par ressource</td>
+										<td>{{coutReelProjet}}</td>
+									</tr>
+									
+									<tr>
+										<td>Cout non planifies</td>
+										<td>Somme des charges non prevus</td>
+										<td>somme de charges imprevues enregistrees par ressource</td>
+										<td>{{coutReelProjet}}</td>
+									</tr>
+									
+									<tr>
+										<td>Cout de retard</td>
+										<td>Ensemble des charges des taches non realisees</td>
+										<td>somme des charges prevus par ressource des taches non realises </td>
+										<td>{{coutRetard}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+						        
+						        
+						        <br>
+						        <br>
+						        
+						        <table class="table table-striped table-bordered" id="table_buttons_wrapper_IN">
+															<thead>
+																<tr>
+																    <th>Ressources</th>
+											                        <th>Type</th>
+																	<th>Capacite max en jour </th>
+																	<th>Cout en euro</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr dir-paginate="m in membresIn|orderBy:sortKey:reverse|filter:search1|itemsPerPage:1000" >
+																	<td>{{m[0]}}</td>
+																	<td>{{m[3]}}</td>
+																	<td>{{m[5]}}</td>
+																	<td ng-init="$parent.total = $parent.total + (m[4] * m[5])">{{m[4]}}</td>
+																</tr>
+															</tbody>
+														</table>
+														<br>
+						        Total ==> {{ total }} euro
+						          <br><br>
+						          
+						          
+						          <table class="table table-striped table-bordered" id="table_buttons_wrapper_IN">
+															<thead>
+																<tr>
+																    <th>Ressources</th>
+																     <th>Type</th>
+											                        <th>Charge Reelle</th>
+																	<th>Charge Prevue </th>
+																	<th>Capacite max en jour </th>
+																	<th>Cout en euro</th>
+																	<th>Taux d utilisation</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr dir-paginate="m in listeUsersProjetTimesheet|orderBy:sortKey:reverse|filter:search1|itemsPerPage:1000" >
+																	<td>{{m[0]}} {{m[1]}}</td>
+																	<td>{{m[2]}}</td>
+																	<td>{{m[3]}}</td>
+																	<td>{{m[4]}}</td>
+																	<td>{{m[5]}}</td>
+																	<td ng-init="$parent.total2 = $parent.total2 + (m[3] * m[6])">{{m[6]}}</td>
+																	<td  ng-style="
+				  (m[3]/m[5])*100 >= 100 && {'background-color': 'red'} ||
+                  (m[3]/m[5])*100 < 100 && {'background-color': 'green'} ">
+                  
+                  
+                  <div class="progress progress_sm">
+                    <div class="progress-bar bg-green" role="progressbar" 
+                    style="width: {{ (m[3]/m[5])*100 }}%"
+                    aria-valuenow="{{ (m[3]/m[5])*100 }}"
+				    aria-valuemin="0"
+				    aria-valuemax="100"></div>
+                  </div>
+                  	{{ (m[3]/m[5])*100  | number:2 }}%
+                  	
+                  	
+                  	
+                  	
+                  </td>
+																</tr>
+																
+															</tbody>
+														</table>
+						          
+						          	 	 		 Total consomme ==> {{ total2 }} euro<br><br>
+						          	 	 		 
+						        Pourcentage d'utilisation ==> {{ (total2/total)*100 | number:2}} % <br>
+						        
+						        <div class="progress progress">
+				                    <div class="progress-bar bg-green" role="progressbar" 
+				                    style="width: {{ (total2/total)*100 }}%; "
+				                    aria-valuenow="{{ (total2/total)*100 }}"
+								    aria-valuemin="0"
+								    aria-valuemax="100"></div>
+				                </div>
+						        
+						        
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              
+			              <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==4">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>DEPASSEMENT</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Depassement cout projet</td>
+										<td>Exprime en J/H, la difference positive entre le cout prevus et le cout reel du projet</td>
+										<td>Cout reel projet - cout prevus projet >0</td>
+										<td>{{coutReelProjet}}</td>
+									</tr>
+									
+									<tr>
+										<td>Depassement cout phase</td>
+										<td>Exprime en J/H, la difference positive entre le cout prevus et le cout reel d une tache ou phase de projet</td>
+										<td>Cout reel phase - cout prevus phase >0</td>
+										<td>{{depassementCoutPhase}}</td>
+									</tr>
+									
+									<tr>
+										<td>Depassement cout par ressources</td>
+										<td>Exprime en J/H, la difference positive entre le cout prevus et le cout reel d une tache ou phase de projet</td>
+										<td>Cout reel ressource- cout prevus ressources >0</td>
+										<td>{{depassementCoutRessources}}</td>
+									</tr>
+									
+									<tr>
+										<td>Depassement delai par phase</td>
+										<td>La difference positive entre le temps reel consomme et le temps prevus par phase (jour)</td>
+										<td>Nb de jour reel par phase - Nb de jour prevus par phase >0</td>
+										<td>{{depassementDelaiPhase}}</td>
+									</tr>
+									
+									<tr>
+										<td>Depassement delai par ressource</td>
+										<td>La difference positive entre le temps reel de travail consomme et le temps prevus par ressource (jour)</td>
+										<td>Nb de jour reel de travail par ressource - Nb de jour de travail prevus par ressource >0</td>
+										<td>{{depassementDelaiRessource}}</td>
+									</tr>
+									
+									<tr>
+										<td>Depassement delai projet</td>
+										<td>La difference positive entre le temps reel de travail consomme et le temps prevus par projet (jour)</td>
+										<td>Nb de jour reel de travail projet - Nb de jour de travail prevus projet >0</td>
+										<td>{{depassementDelaiProjet}}</td>
+									</tr>
+															         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			                
+			               <div class="col-md-12 col-sm-12 col-xs-12" ng-if="idCategorie==5">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>IMPREVUS</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Emploi de ressources</td>
+										<td>Permet d evaluer le taux d utilisation de chaque ressource</td>
+										<td>(Temps total reel d activite / Temps total prevus d activite) x 100</td>
+										<td>{{ressourceEmploi}}</td>
+									</tr>
+									
+									<tr>
+										<td>Capacite</td>
+										<td>Aptitude en termes de ressource</td>
+										<td>Nb total demande /Nb total disponible</td>
+										<td>{{ressourceCapacite}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==6">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>ECARTS</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Ecart cout</td>
+										<td></td>
+										<td>(Cout Actualise-Cout Initial)/ Cout Initial</td>
+										<td>{{ecartCout}}</td>
+									</tr>
+									
+									<tr>
+										<td>Ecart Dure</td>
+										<td></td>
+										<td>(Duree Actualisee-Duree Initiale)/ Duree Initiale</td>
+										<td>{{ecartDure}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==7">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>RISQUES</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Points en suspens</td>
+										<td>Nb de taches ou phase en standing by</td>
+										<td>somme des points en suspens</td>
+										<td>{{pointsSuspens}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+			              
+			              <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==8">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>RESSOURCES</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                    <table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						
+									
+									<tr>
+										<td>Densite risque</td>
+										<td></td>
+										<td>Niveau de risque global / Nbre taches Brut actualise</td>
+										<td>{{densiteRisque}}</td>
+									</tr>
+									
+									<tr>
+										<td>Nb de risque realise</td>
+										<td></td>
+										<td>Nb d incidents realises</td>
+										<td>{{nbRisqueRaalise}}</td>
+									</tr>
+									
+									<tr>
+										<td>% risque realise</td>
+										<td>Taux d incidents enregistres</td>
+										<td>Nb d incidents realises / Nb total risque</td>
+										<td>{{risqueRealise}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+			                  </div>
+			                </div>
+			              </div>
+			              
+                            
+                            <div class="col-md-12 col-sm-12 col-xs-12"  ng-if="idCategorie==9">
+			                <div class="x_panel">
+			                  <div class="x_title">
+			                    <h2>RESULTATS</h2>
+			                    <div class="clearfix"></div>
+			                  </div>
+			                  <div class="x_content">
+			                  
+			                  
+			                  
+			                  	<table  class="table table-striped projects table-bordered">
+					              <thead>
+						              <tr>
+						                <th>Indicateur</th>
+						                <th>Description</th>
+						                <th>Formule</th>
+						                <th>Valeur</th>
+						              </tr>
+					              </thead>
+              					  <tbody>
+              						<tr>
+										<td>Cout Vs Budget</td>
+										<td></td>
+										<td>Cout total /budget total</td>
+										<td>{{coutVsBudget}}</td>
+									</tr>
+						         </tbody>
+						        </table>
+
+
+	 	
+
+			                  </div>
+			                </div>
+			              </div>
+                            
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /CONTENT MAIL -->
+                      
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+                
+                
+                
+                
+                
+                
+                
+                
+              </div>
+            
+              
+          
+           
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+		 
+		 
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../_assets/chart/js/jquery.circliful.js"></script>
+
+		 
+
+<script>
+    $( document ).ready(function() { // 6,32 5,38 2,34
+        $("#test-circle").circliful({
+            animation: 1,
+            animationStep: 5,
+            foregroundBorderWidth: 15,
+            backgroundBorderWidth: 15,
+            percent: 38,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+        });
+        $("#test-circle2").circliful({
+            animation: 0,
+            animationStep: 6,
+            foregroundBorderWidth: 5,
+            backgroundColor: "none",
+            fillColor: '#eee',
+            percent: 50,
+            iconColor: '#3498DB',
+            icon: 'f206',
+            iconSize: '40',
+            iconPosition: 'middle'
+        });
+        $("#test-circle3").circliful({
+            animation: 1,
+            animationStep: 6,
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 1,
+            percent: 88,
+            iconColor: '#3498DB',
+            icon: 'f004',
+            iconSize: '40',
+            iconPosition: 'middle'
+        });
+        $("#test-circle4").circliful({
+            animation: 1,
+            animationStep: 1,
+            target: 10,
+            start: 2,
+            showPercent: 1,
+            backgroundColor: '#000',
+            foregroundColor: '#A8C64A',
+            fontColor: '#000',
+            iconColor: '#000',
+            icon: 'f0a0',
+            iconSize: '40',
+            iconPosition: 'middle',
+            text: 'No Kids'
+        });
+        $("#test-circle5").circliful({
+            animationStep: 5,
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            percent: 80,
+            icon: 'f0a0',
+            iconPosition: 'middle',
+            text: 'Space Left',
+            textBelow: true
+        });
+        $("#test-circle6").circliful({
+            animation: 1,
+            animationStep: 5,
+            foregroundBorderWidth: 7,
+            backgroundBorderWidth: 7,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+            multiPercentage: 1,
+            percentages: [
+                {'percent': 10, 'color': '#3180B8', 'title': 'Gryffindor' },
+                {'percent': 30, 'color': '#4ADBEA', 'title': 'Ravenclaw' },
+                {'percent': 50, 'color': '#49EBA8', 'title': 'Hufflepuff' },
+                {'percent': 70, 'color': '#FFCA35', 'title': 'Slytherin' }
+            ],
+            multiPercentageLegend: 1,
+            replacePercentageByText: '',
+            backgroundColor: '#eee',
+            icon: 'f0d0',
+            iconPosition: 'middle',
+            iconColor: '#273B4E'
+        });
+        $("#test-circle7").circliful({
+            animation: 1,
+            animationStep: 5,
+            percent: 80,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+            progressColor: {20: '#CC9487', 40: '#FA6C00', 60: '#FF6C99'}
+        });
+    });
+</script>

@@ -1,0 +1,127 @@
+<meta charset="UTF-8" />
+
+<div class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading"></div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<div>
+					<form>
+						<table>
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<div class="row">
+												<td><label>Du</label></td>
+												<td>
+													<div class="input-group input-append date" id="dp1"
+														data-date="dd/mm/yyyy">
+														<input class="form-control" type="text"
+															ng-model="dateDebut" id="dateDebut" /> <span
+															class="input-group-addon add-on"><i
+															class="icon-calendar"></i></span>
+													</div>
+
+												</td>
+												<td><label>Au</label></td>
+												<td>
+													<div class="input-group input-append date" id="dp3"
+														data-date="dd/mm/yyyy">
+														<input class="form-control" type="text" id="dateFin"
+															ng-model="dateFin" /> <span
+															class="input-group-addon add-on"><i
+															class="icon-calendar"></i></span>
+													</div>
+												</td>
+										</tr>
+
+										<tr>
+											<td><label>Num Carte</label></td>
+											<td>
+												<div class="input-group input-append date">
+													<input class="form-control" type="text" id="numCarte"
+														ng-model="numCarte" />
+												</div>
+											</td>
+											<td><label>GAB</label></td>
+											<td>
+												<div class="input-group input-append date">
+													<input class="form-control" type="text" ng-model="terminal"
+														id="terminal" />
+												</div>
+											</td>
+										</tr>
+
+										<tr>
+											<td><label>Num Seq</label></td>
+											<td>
+												<div class="input-group input-append date">
+													<input class="form-control" type="text" id="NumSeq"
+														ng-model="NumSeq" />
+												</div>
+											</td>
+											<td><label>Code Authorisation</label></td>
+											<td>
+												<div class="input-group input-append date">
+													<input class="form-control" type="text"
+														id="codeTransaction" ng-model="codeTransaction" />
+												</div>
+											</td>
+										</tr>
+
+									</table>
+								</td>
+
+
+								<td align="center" width="400px">
+									<table>
+										<tr>
+											<td>Etat</td>
+											<td><select class="form-control" id="etat"
+												ng-model="etat" disabled>
+													<option></option>
+													<option>En Attente</option>
+													<option>Compensée</option>
+													<option>Annulée CNC</option>
+													<option>Annulée Arriérée</option>
+													<!-- <option>Transactions en cours de compensations</option> Fichier compensation National!-->
+											</select></td>
+										</tr>
+
+										<tr>
+											<td>Statut</td>
+											<td><select class="form-control" id="statut"
+												ng-model="statut" disabled>
+													<option></option>
+													<option>CNC</option>
+													<option>Arriérée</option>
+											</select></td>
+										</tr>
+
+										<tr>
+											<td>Sort</td>
+											<td><select class="form-control" id="typeSort"
+												ng-model="typeSort" disabled>
+													<option></option>
+													<option>Crédit Agence</option>
+													<option>Crédit Porteur</option>
+													<option>Componsée Manuellement</option>
+											</select></td>
+										</tr>
+									</table>
+								</td>
+								<td align="center" width="200px">Nombre des Transactions :
+									{{ nbElement }}<br> Total : {{ somme  | numberFilter }} TND<br> <br>
+									<button class="btn btn-primary" ng-click="charger()">Chercher</button>
+								</td>
+							</tr>
+
+						</table>
+					</form>
+				</div>
+				<br> <br>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,385 @@
+      <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="admin-themes-lab">
+        <meta name="author" content="themes-lab">
+        <link rel="shortcut icon" href="_assets/global/images/favicon.png" type="image/png">
+        <title data-ng-bind="$state.current.data.pageTitle + ' | Monetique"></title>
+        <link href="_assets/global/css/style.css" rel="stylesheet">
+        <link href="_assets/global/css/theme.css" rel="stylesheet">
+        <link href="_assets/global/css/ui.css" rel="stylesheet">
+        <link href="_assets/global/css/custom.min.css" rel="stylesheet">
+        <link href="_assets//build/css/custom.min.css" rel="stylesheet">
+        <link href="_assets/global/plugins/bootstrap-tags-input/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/colorpicker/spectrum.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/ion-slider/ion.rangeSlider.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/ion-slider/style.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/cke-editor/skins/bootstrapck/editor.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/hover-effects/hover-effects.min.css" rel="stylesheet">
+        <link href="_assets/global/plugins/datatables/dataTables.min.css" rel="stylesheet" />
+        <link href="_assets/global/plugins/font-awesome-animation/font-awesome-animation.min.css" rel="stylesheet" />
+        
+       <link href="_assets/angular_date/angular-datepicker.min.css" rel="stylesheet"></link>
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="_assets/chart/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="_assets/chartcss/jquery.circliful.css">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- BEGIN ANGULARJS STYLE -->
+        <link href="_assets/css/angular-theme.css" rel="stylesheet">
+        <!-- END ANGULARJS STYLE -->
+        <!-- BEGIN LAYOUT STYLE -->
+            <link rel="stylesheet" href="_assets/loading.css">
+        <style type="text/css">
+        
+			body { 
+			  font-family: Tahoma, Arial, Verdana;
+			  font-size: 12px;
+			  color: black; 
+			  background: #f5f5f5;
+			  
+			  #chartdiv  {
+				  width: 640px;
+				  height: 400px;
+			  }
+			}
+        </style>
+        
+        <!-- END LAYOUT STYLE -->
+    </head>
+    <body ng-app="newApp" class="fixed-topbar fixed-sidebar theme-sdtl color-default ng-scope" 
+    ng-controller="mainCtrl">
+        <!-- BEGIN PAGE SPINNER -->
+ <div ng-show="loggedIn" ng-spinner-loader class="page-spinner-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+ 
+        <!-- END PAGE SPINNER -->
+  <section>
+            <!-- BEGIN SIDEBAR -->
+            <div ng-show="loggedIn" class="sidebar">
+                <div class="logopanel">
+                    <h1>
+                 <img src="_assets/global/images/stb-tunisie.jpg" alt="user image">
+                    </h1>
+                </div>
+                <br><br>
+                <div class="sidebar-inner">
+                   <ul class="nav nav-sidebar">
+                            
+                            
+                        <li ng-class="{ active  : isActive('/')}" ng-show="canSee('ROLE_DASHBORD')"><a href="#/Dashbord"><i class="icon-home"></i><span>Dashboard</span></a></li>
+                        <li ng-class="{ active  : isActive('/')}" ng-show="canSee('ROLE_DASHBORD')"><a href="#/addProject"><i class="fa fa-desktop"></i><span>Démarrer un projet</span></a></li>
+                        <li ng-class="{ active  : isActive('/')}" ng-show="canSee('ROLE_DASHBORD')"><a href="#/showAllProject"><i class="fa fa-table"></i><span>Gestion des projets</span></a></li>
+                        <li ng-class="{ active  : isActive('/')}" ng-show="canSee('ROLE_DASHBORD')"><a href="#/endProject"><i class="icon-close"></i><span>Clôturer un projet</span></a></li>  
+                          <li ng-class="{ active  : isActive('/')}" ng-show="canSee('ROLE_DASHBORD')" ><a href="#/societe"><i class="icon-home"></i><span>Gestion des Sociétés </span></a></li>
+                        <li ng-class="{ active  : isActive('user/gestionuser')}" ng-show="canSee('ROLE_DASHBORD')" ><a href="#/gestionuser"><i class="icon-home"></i><span>Gestion des Utilisateurs </span></a></li>
+                  
+                  	 <li class="nav-parent" ng-show="canSee('ROLE_DOCUMENTATION_UTILISATION') || canSee('ROLE_DOCUMENTATION_COMPTABLE')" >
+                            <a href=""><i class="fa fa-table"></i><span> Documentation</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+       							<li ng-show="canSee('ROLE_DOCUMENTATION_UTILISATION')" ng-class="{ active : isActive('documentation/utilisation.html')}"><a href="#/utilisation"><i class="icon-home"></i><span>  Manuel d'utilisation</span></a></li>
+    							<li ng-show="canSee('ROLE_DOCUMENTATION_COMPTABLE')" ng-class="{ active : isActive('documentation/comptable.html')}"><a href="#/comptable"><i class="icon-home"></i><span>  Manuel Comptable</span></a></li>
+                            </ul>
+                        </li>
+                  
+                    </ul>
+                    <!-- SIDEBAR WIDGET FOLDERS -->
+                  <div class="sidebar-footer clearfix">
+                        <a class="pull-left footer-settings" data-target="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
+                        <i class="icon-settings"></i>
+                        </a>
+                        <a class="pull-left toggle_fullscreen" data-target="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+                        <i class="icon-size-fullscreen"></i>
+                        </a>
+                        <a class="pull-left"  data-rel="tooltip" data-placement="top" data-original-title="Lockscreen">
+                        <i class="icon-lock"></i>
+                        </a>
+                        <a class="pull-left btn-effect" ng-click="logout()" href="#" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                        <i class="icon-power"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END SIDEBAR -->
+            <div class="main-content">
+                <!-- BEGIN TOPBAR -->
+                <div ng-show="loggedIn" class="topbar">
+                    <div class="header-left">
+                        <div class="topnav">
+                            <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        </div>
+                    </div>
+                    <div class="header-right"> 
+                        <ul class="header-menu nav navbar-nav">
+                            <!-- BEGIN USER DROPDOWN -->
+                     </li>
+                            <!-- END USER DROPDOWN -->
+                            <!-- BEGIN NOTIFICATION DROPDOWN -->
+                         </li>
+                            <li class="dropdown" id="user-header">
+                                <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+	                                <span class="username">  
+	                                	<font size="6">{{user.userName}}</font>
+	                                </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  
+                                    <li>
+                                        <a data-target="#">
+                  <form ng-submit="logout()">
+                
+		<i class="icon-logout"></i><span>	<input type="submit" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;"   value="Sign Out" /></span> <input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
+		</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- END USER DROPDOWN -->
+                            <!-- CHAT BAR ICON -->
+                    </ul>
+                    </div>
+                    <!-- header-right -->
+                </div>
+                <!-- END TOPBAR -->
+                <!-- BEGIN PAGE CONTENT -->
+                <div ui-view class="at-view-slide-in-left page-content"  style="height: 100%">
+                
+                
+                 
+                  
+                  
+                  
+                  
+                </div>
+                <!-- END PAGE CONTENT -->
+            </div>
+            <!-- END MAIN CONTENT -->
+            <!-- BEGIN BUILDER -->
+ 
+            <!-- END BUILDER -->
+        </section>
+        <!-- BEGIN QUICKVIEW SIDEBAR -->
+        <div id="quickview-sidebar">
+            <div class="quickview-header">
+            
+            </div>
+            <div class="quickview">
+                <div class="tab-content">
+                
+                </div>
+            </div>
+        </div>
+        <!-- END QUICKVIEW SIDEBAR -->
+        <!-- BEGIN SEARCH -->
+   <div class="loader-overlay">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+    </div>
+        <!-- END SEARCH -->
+        <!-- BEGIN PRELOADER -->
+         <!-- BEGIN ANGULARJS SCRIPTS -->
+         <script src="_assets/vendors/jquery/dist/jquery.min.js"></script>	
+        <script src="_assets/plugins/angular/angular.js"></script>
+        <script src="_assets/angular_date/angular-locale_fr-fr.js"></script>
+        <script src="_assets/plugins/angular/angular-ui-router.min.js"></script>
+        <script src="_assets/plugins/json3/lib/json3.js"></script>
+        <script src="_assets/plugins/angular-resource/angular-resource.js"></script>
+        <script src="_assets/plugins/angular-cookies/angular-cookies.js"></script>
+        <script src="_assets/plugins/angular-sanitize/angular-sanitize.js"></script>
+        <script src="_assets/plugins/angular-animate/angular-animate.js"></script>
+        <script src="_assets/plugins/angular-touch/angular-touch.js"></script>
+        <script src="_assets/plugins/angular-route/angular-route.js"></script>
+        <script src="_assets/plugins/angular-bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+        <script src="directives/app.js"></script>
+        <script src="directives/ngViewClass.js"></script>
+        <!-- END ANGULARJS SCRIPTS -->
+        <script src="_assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+        <script src="_assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script src="_assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+        <script src="_assets/global/plugins/gsap/main-gsap.min.js"></script>
+        <script src="_assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="_assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script>
+        <script src="_assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
+        <script src="_assets/global/plugins/bootbox/bootbox.min.js"></script>
+        <script src="_assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script>
+        <script src="_assets/global/plugins/charts-sparkline/sparkline.min.js"></script>
+        <script src="_assets/global/plugins/icheck/icheck.min.js"></script>
+        <script src="_assets/global/plugins/backstretch/backstretch.min.js"></script>
+        <script src="_assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+        <script src="_assets/global/js/sidebar_hover.js"></script>
+        <script src="_assets/global/js/widgets/notes.js"></script>
+        <script src="_assets/global/js/pages/search.js"></script>
+        <script src="_assets/global/plugins/icheck/icheck.js"></script>
+        
+        <script src="_assets/plugins/ng-upload/ng-file-upload-shim.min.js"></script>
+        <script src="_assets/plugins/ng-upload/ng-file-upload.min.js"></script>
+        
+        <script src="_assets/global/plugins/colorpicker/spectrum.js"></script>
+        <script src="_assets/global/plugins/jquery-validation/jquery.validate.js"></script>
+        <script src="_assets/global/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+        <script src="_assets/global/plugins/ion-slider/ion.rangeSlider.js"></script>
+        <script src="_assets/global/plugins/bootstrap/js/jasny-bootstrap.js"></script>
+        <script src="_assets/global/plugins/isotope/isotope.pkgd.min.js"></script>
+        <script src="_assets/global/plugins/countup/countUp.js"></script>
+        <script src="_assets/global/plugins/bootstrap-loading/lada.min.js"></script>
+        <script src="_assets/global/plugins/datatables/jquery.dataTables.min.js"></script>
+        
+        <script src="_assets/global/plugins/cke-editor/ckeditor.js"></script>
+        <script src="_assets/global/plugins/cke-editor/config.js"></script>
+        <script src="_assets/global/plugins/cke-editor/styles.js"></script>
+        <script src="_assets/global/plugins/cke-editor/adapters/adapters.min.js"></script>
+        <script src="_assets/global/plugins/cke-editor/lang/en.js"></script>
+        <script src="_assets/global/plugins/cke-editor/skins/bootstrapck/skin.js"></script>
+        <script src="_assets/global/plugins/dropzone/dropzone.min.js"></script>
+        <script src="_assets/global/plugins/idle-timeout/jquery.idletimeout.min.js"></script>
+        <script src="_assets/global/plugins/idle-timeout/jquery.idletimer.min.js"></script>
+        <script src="_assets/global/plugins/cropper/cropper.js"></script>
+        <script src="_assets/global/plugins/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+        <script src="_assets/global/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script>
+        <script src="_assets/global/js/widgets/todo_list.js"></script>
+        <script src="_assets/global/plugins/charts-chartjs/Chart.min.js"></script>
+        <script src="_assets/global/plugins/charts-highstock/js/highstock.min.js"></script>
+        <script src="_assets/global/plugins/charts-highstock/js/modules/exporting.min.js"></script>
+        <script src="_assets/global/plugins/bootstrap-tags-input/bootstrap-tagsinput.js"></script>
+        <script src="_assets/global/plugins/charts-highstock/js/highcharts-more.min.js"></script>
+        <script src="_assets/global/plugins/autosize/autosize.min.js"></script>
+        <script src="_assets/global/js/widgets/widget_weather.js"></script>
+        <!-- BEGIN CUSTOM ANGULARJS SCRIPTS -->
+        <script src="_assets/js/pages/dashboard.js"></script>
+        <script src="_assets/js/pages/charts.js"></script>
+        <script src="_assets/js/pages/charts_finance.js"></script>
+        <script src="_assets/js/pages/layouts_api.js"></script>
+        <script src="_assets/js/builder.js"></script>
+        <script src="_assets/js/application.js"></script>
+        <script src="_assets/js/plugins.js"></script> 
+        <script src="_assets/js/quickview.js"></script>
+        <script src="directives/mainCtrl.js"></script>
+        
+        
+        
+    	
+ 		 
+ 		 
+ 		 <script src="js/userUpdate.js"></script>
+ 		<script src="js/user.js"></script>
+ 		<script src="js/Statistique.js"></script>
+ 		<script src="js/Dashbord.js"></script>
+ 		<script src="js/_Dashbord.js"></script>
+ 		
+ 		
+ 		<script src="js/addProject.js"></script>
+ 		<script src="js/affectRessourceProject.js"></script>
+ 		<script src="js/showAllProject.js"></script>
+ 		<script src="js/endProject.js"></script>
+ 		
+ 		<script src="js/projet.js"></script>
+ 		<script src="js/membres.js"></script>
+		<script src="js/sprint.js"></script>
+		<script src="js/gantt.js"></script>
+		<script src="js/tests.js"></script>
+		<script src="js/bugs.js"></script>
+		<script src="js/alertes.js"></script>
+		<script src="js/messages.js"></script>
+		<script src="js/sad.js"></script>
+		<script src="js/release.js"></script>
+		<script src="js/documents.js"></script>
+		<script src="js/parametres.js"></script>
+		
+		<script src="js/regleAlertes.js"></script>
+		
+		<script src="js/societe.js"></script>
+ 		
+ 		
+ 		
+ 		<script src="js/environnement.js"></script>
+ 		<script src="js/verssion.js"></script>
+ 		<script src="js/moduleApp.js"></script>
+ 		
+ 		<script src="js/risque.js"></script>
+ 		
+ 		<script src="js/timesheet.js"></script>
+ 		
+		<script src="_assets/pagination/lib/dirPagination.js"></script>
+		
+		<script src="js/checklist-model.js"></script>	
+	
+
+    <script src="_assets/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="_assets/vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="_assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="_assets/vendors/iCheck/icheck.min.js"></script>
+      <script src="_assets/vendors/raphael/raphael.min.js"></script>
+     <script src="_assets/vendors/morris.js/morris.min.js"></script>
+    <script src="_assets/build/js/custom.min.js"></script>
+	
+     <script src="_assets/vendors/echarts/dist/echarts.min.js"></script>
+   
+    
+    
+     
+     <script src="_assets/angular_date/angular-datepicker.min.js"></script>
+    
+		
+		 <script src="_assets/md5/md5.js"></script>
+		 <script src="_assets/md5/demo/demo.js"></script>
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		<script>
+			function validateDate(dateStr) {
+				var dateArr = dateStr.split('/');
+				var newDate = new Date(dateArr[2], parseInt(dateArr[1],10)-1, parseInt(dateArr[0],10));
+				return newDate.getMonth() == parseInt(dateArr[1],10)-1;
+			}
+		</script>
+ 
+
+    </body>
+</html>
