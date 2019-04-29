@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -9,6 +10,9 @@
 	<packaging>jar</packaging>
 	<name>3ATechnologies</name>
 	<description>3ATechnologies project for Spring Boot</description>
+
+
+
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,6 +32,32 @@
 		<jasper.report.version>6.2.2</jasper.report.version>
 		<jasper.report.fonts.version>6.0.0</jasper.report.fonts.version>
 	</properties>
+	
+	
+	
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>C790KR2-releases</name>
+			<url>http://localhost:8081/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>C790KR2-snapshots</name>
+			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<scm>
+    <connection>scm:git:git@github.com/aabouda/3ATechnologies.git</connection>
+    <developerConnection>scm:git:git@github.com/aabouda/3ATechnologies.git</developerConnection>
+    <url>git@github.com/aabouda/3ATechnologies.git</url>
+    <tag>HEAD</tag>
+  </scm>
+  
+  
+  
+  
 
 
 	<dependencies>
@@ -161,7 +191,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			  <version>8.0.11</version> 
+			<version>8.0.11</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
 		<dependency>
@@ -171,7 +201,7 @@
 		</dependency>
 	</dependencies>
 
-
+	
 
 	<build>
 		<plugins>
