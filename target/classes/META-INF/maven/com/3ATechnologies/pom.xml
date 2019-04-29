@@ -32,9 +32,9 @@
 		<jasper.report.version>6.2.2</jasper.report.version>
 		<jasper.report.fonts.version>6.0.0</jasper.report.fonts.version>
 	</properties>
-	
-	
-	
+
+
+
 	<distributionManagement>
 		<repository>
 			<id>central</id>
@@ -47,17 +47,17 @@
 			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
 	<scm>
-    <connection>scm:git:git@github.com/aabouda/3ATechnologies.git</connection>
-    <developerConnection>scm:git:git@github.com/aabouda/3ATechnologies.git</developerConnection>
-    <url>git@github.com/aabouda/3ATechnologies.git</url>
-    <tag>HEAD</tag>
-  </scm>
-  
-  
-  
-  
+		<connection>scm:git:git@github.com/aabouda/3ATechnologies.git</connection>
+		<developerConnection>scm:git:git@github.com/aabouda/3ATechnologies.git</developerConnection>
+		<url>git@github.com/aabouda/3ATechnologies.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+
+
+
 
 
 	<dependencies>
@@ -201,7 +201,7 @@
 		</dependency>
 	</dependencies>
 
-	
+
 
 	<build>
 		<plugins>
@@ -209,8 +209,21 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com</groupId>
+				<artifactId>3ATechnologies</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+
+
 		</plugins>
 	</build>
+
 
 
 </project>

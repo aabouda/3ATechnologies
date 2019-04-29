@@ -43,7 +43,7 @@ public class ConnexionDB {
 		//this.loginDB = "uelearning";
 		this.loginDB = "aladin";
 		this.pwDB = "Tunage9*";
-		this.path = "jdbc:mysql://localhost:3306/3ATechnologies?serverTimezone=UTC&useSSL=false";
+		this.path = "jdbc:mysql://localhost:3306/3ATechnologies?serverTimezone=UTC";
 	}
 	
 	public ConnexionDB() {
